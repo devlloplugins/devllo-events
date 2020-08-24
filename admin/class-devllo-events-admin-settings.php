@@ -62,7 +62,6 @@ class Devllo_Events_Admin_Settings{
 <?php
 
        
-        //  $api_key = 'AIzaSyCf3y9wvZWfhgFtGE9YE6_sgDwUwNhT1ow';
         if( $active_tab == 'devllo_events_options' ) {
           settings_fields( 'devllo-events-options' );
           do_settings_sections( 'devllo-events-options' );
