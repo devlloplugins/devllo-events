@@ -15,8 +15,6 @@ wp_enqueue_script( 'map_api_script');
 
 
 get_header( ); 
-//wp_register_style('prefix_bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
-//wp_enqueue_style('prefix_bootstrap');
 
 global $post;
 global $wp_locale;
@@ -85,20 +83,20 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
           <div class="col-md-8 blog-main">
 
             <div class="event-banner-image">
-            <img class="img-fluid rounded" src="<?php echo $featured_img_url; ?>" alt="">
+            <img class="img-fluid rounded" src="<?php echo esc_url($featured_img_url); ?>" alt="">
             </div>
 
             <div class="event-details">
-              <h2>Event Details</h2>
+              <h2><?php _e('Event Details', 'devllo-events') ?></h2>
               <p class="lead"><?php the_content(); ?></p>
 
               <div class="event-date-time">
-                <h2>Event Date</h2>
-                <p>Event Start Date: 
+                <h2><?php _e('Event Date', 'devllo-events') ?></h2>
+                <p><?php _e('Event Start Date:', 'devllo-events') ?>
                   <?php echo $startweekday . ', ' . $wp_locale->get_month($startmonth) . ' ' . get_post_meta( $post->ID, '_start_day', true ). ', ' . get_post_meta($post->ID, '_start_hour', true) . ':' . get_post_meta($post->ID, '_start_minute', true);?>
                   </p> 
 
-                  <p>Event End Date: 
+                  <p><?php _e('Event End Date:', 'devllo-events') ?>
                   <?php echo $endweekday . ', ' . $wp_locale->get_month($endmonth) . ' ' . get_post_meta( $post->ID, '_end_day', true ). ', ' . get_post_meta($post->ID, '_end_hour', true) . ':' . get_post_meta($post->ID, '_end_minute', true);?>
                   </p> 
               </div>
@@ -115,13 +113,13 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
       <div class="col-md-4">
               <div class="event-location">
-                <h2>Event Website</h2>
-                <p><a href="<?php echo $url; ?>"><?php echo $url; ?></a></p>
-                <h2>Event Online Link</h2>
-                <p><a href="<?php echo $event_link; ?>"><?php echo $event_link; ?></a></p>
-                <h2>Location</h2>
-                <p><?php echo $location_name; ?></p>
-              <p><?php echo $map_location; ?></p>
+                <h2><?php _e('Event Website', 'devllo-events') ?></h2>
+                <p><a href="<?php echo esc_url($url); ?>"><?php echo esc_attr($url); ?></a></p>
+                <h2><?php _e('Event Online Link', 'devllo-events') ?></h2>
+                <p><a href="<?php echo esc_url($event_link) ?>"><?php echo esc_attr($event_link); ?></a></p>
+                <h2><?php _e('Event Location', 'devllo-events') ?></h2>
+                <p><?php echo esc_attr($location_name); ?></p>
+              <p><?php echo esc_attr($map_location); ?></p>
               <div id="map"></div>
               </div>
       </div>

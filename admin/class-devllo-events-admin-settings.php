@@ -43,19 +43,25 @@ class Devllo_Events_Admin_Settings{
 
     
     public static function devllo_events_settings_page(){
-      
-      ?>
-        <h1><?php echo get_admin_page_title(); ?></h1>
+      $adminpagetitle = get_admin_page_title();
+	  ?>
+        <h1><?php echo esc_attr($adminpagetitle); ?></h1>
 
         <?php
-        $active_tab = "devllo_events_options";
-        if( isset( $_GET[ 'tab' ] ) ) {
-            $active_tab = $_GET[ 'tab' ];
+		$active_tab = "devllo_events_options";
+		$tab = filter_input(
+			INPUT_GET, 
+			'tab', 
+			FILTER_CALLBACK, 
+			['options' => 'esc_html']
+		);
+        if( isset( $tab ) ) {
+            $active_tab = $tab;
           } ?>
 
         <h2 class="nav-tab-wrapper">
-				<a href="?page=devllo-events-settings&tab=devllo_events_options&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_options' ? 'nav-tab-active' : ''; ?>">Options</a>
-				<a href="?page=devllo-events-settings&tab=devllo_events_pages&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_pages' ? 'nav-tab-active' : ''; ?>">Pages</a>
+				<a href="?page=devllo-events-settings&tab=devllo_events_options&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_options' ? 'nav-tab-active' : ''; ?>"><?php _e('Options', 'devllo-events'); ?></a>
+				<a href="?page=devllo-events-settings&tab=devllo_events_pages&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_pages' ? 'nav-tab-active' : ''; ?>"><?php _e('Pages', 'devllo-events'); ?></a>
 				</h2>
         
           <form method="post" action="options.php">
@@ -71,16 +77,18 @@ class Devllo_Events_Admin_Settings{
 			<?php
             if (!get_option('devllo-map-api-key')){ ?>
                 <div class="error notice">
-                <?php
-                echo 'Please Add Your Google Map API Key. <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">Click Here to get a key</a></div>';
+				<?php
+				$gmapapiurl = 'https://developers.google.com/maps/documentation/javascript/get-api-key';
+                echo 'Please Add Your Google Map API Key. <a href="'.esc_url($gmapapiurl).'">Click Here to get a key</a></div>';
             }
             ?>
 		<table class="table">
             <tr>
-			<td>Google Map API Key</td>
+			<td><?php _e('Google Map API Key', 'devllo-events'); ?></td>
 			</tr>
 			<tr>
-            <td><input name="devllo-map-api-key" type="text" class="regular-text" value="<?php echo get_option('devllo-map-api-key'); ?>"></td>
+			<?php $devlloapikey = get_option('devllo-map-api-key');?>
+            <td><input name="devllo-map-api-key" type="text" class="regular-text" value="<?php if (isset($devlloapikey)) { echo esc_attr($devlloapikey); }?>"></td>
 			</tr>
             </table>
            
@@ -102,23 +110,26 @@ class Devllo_Events_Admin_Settings{
 			<tr>
 			<?php
 			if (devllo_post_exists_by_slug( 'events' )) {
+				$siteurl = get_site_url();
 				?>
-			<td>Events Page:</td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo get_site_url(); ?>/events"></td> <td><a href="<?php echo get_site_url(); ?>/events" class="button">View Page</a></td>
+			<td><?php _e('Events Page:', 'devllo-events'); ?></td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo esc_url($siteurl); ?>/events"></td> <td><a href="<?php echo get_site_url(); ?>/events" class="button">View Page</a></td>
 			<?php } 
 			else { 
+				$eventspage = get_option('devllo-events-page');
 				?>
-			<td>Events Page:</td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo get_option('devllo-events-page'); ?>"></td><td></td>
+			<td><?php _e('Events Page:', 'devllo-events'); ?></td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo esc_html($eventspage); ?>"></td><td></td>
 			</tr>
 			<?php  } ?>
 			<tr>
 			<?php
 			if (devllo_post_exists_by_slug( 'calendar' )) {
 				?>
-			<td>Calendar Page:</td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo get_site_url(); ?>/calendar"></td> <td><a href="<?php echo get_site_url(); ?>/calendar" class="button">View Page</a></td>
+			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_url($siteurl); ?>/calendar"></td> <td><a href="<?php echo get_site_url(); ?>/calendar" class="button">View Page</a></td>
 			<?php } 
 			else { 
+				$calendarpage = get_option('devllo-events-page');
 				?>
-			<td>Calendar Page:</td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo get_option('devllo-calendar-page'); ?>"></td><td></td>
+			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_html($calendarpage); ?>"></td><td></td>
 			</tr>
 			<?php  } ?>
 			
