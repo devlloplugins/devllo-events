@@ -90,40 +90,40 @@ class Devllo_Events_Posts_Admin {
 			<div id="address">
 				<div class="row">
 					<div class="col-md-6">
-						<label class="control-label">Street address</label><br/>
+						<label class="control-label"><?php _e( 'Street Address:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control" value="<?php echo esc_attr( $location_street );?>" name="street_number" id="street_number" disabled="true">
 					</div>
 					<div class="col-md-6">
-						<label class="control-label">Route</label><br/>
+						<label class="control-label"><?php _e( 'Route:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control" value="<?php echo esc_attr( $location_route );?>" name="route" id="route" disabled="true">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
-						<label class="control-label">City</label><br/>
+						<label class="control-label"><?php _e( 'City:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control field" value="<?php echo esc_attr( $location_city );?>" name="locality" id="locality" disabled="true">
 					</div>
 					<div class="col-md-6"> 
-						<label class="control-label">State</label><br/>
+						<label class="control-label"><?php _e( 'State:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control" value="<?php echo esc_attr( $location_state );?>" name="administrative_area_level_1" id="administrative_area_level_1" disabled="true">
 					</div>
 				</div>
 				<div class="row">
 					 <div class="col-md-6">
-						<label class="control-label">Zip code</label><br/>
+						<label class="control-label"><?php _e( 'Zip Code:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control" value="<?php echo esc_attr( $location_zip );?>" name="postal_code" id="postal_code" disabled="true">
 					 </div>
 					 <div class="col-md-6">
-						<label class="control-label">Country</label><br/>
+						<label class="control-label"><?php _e( 'Country:', 'devllo-events' ); ?></label><br/>
 						<input class="form-control" value="<?php echo esc_attr( $location_country );?>" name="country" id="country" disabled="true">
 					 </div>
                      <div class="col-md-6">
-						<label class="control-label">Lat</label><br/>
-						<input class="form-control" value="<?php echo esc_attr( $location_lat );?>" name="lat" id="lat" disabled="true">
+						<label class="control-label">Lat:</label><br/>
+						<input class="form-control" value="<?php echo floatval( $location_lat );?>" name="lat" id="lat" disabled="true">
 					 </div>
                      <div class="col-md-6">
-						<label class="control-label">Long</label><br/>
-						<input class="form-control" value="<?php echo esc_attr( $location_long );?>" name="long" id="long" disabled="true">
+						<label class="control-label">Long:</label><br/>
+						<input class="form-control" value="<?php echo floatval( $location_long );?>" name="long" id="long" disabled="true">
                      </div>
                      <div class="col-md-6">
 						<label class="control-label"><?php _e( 'Event Website:', 'devllo-events' ); ?></label><br/>
@@ -135,14 +135,6 @@ class Devllo_Events_Posts_Admin {
 	</div> <!-- /panel-primary-->
 </div>  <!-- /container-->
 
-
-<!--
-    <div id="map"></div>
-    <div id="infowindow-content">
-      <img src="" width="16" height="16" id="place-icon">
-      <span id="place-name"  class="title"></span><br>
-      <span id="place-address"></span>
-    </div> -->
        <?php
 
 
@@ -258,7 +250,7 @@ class Devllo_Events_Posts_Admin {
         }
 
         if (isset($_POST['street_number'])){
-        $devllo_event_street = sanitize_text_field( $_POST['street_number'] );
+        $devllo_event_street = intval( $_POST['street_number'] );
         }
         if (isset($_POST['route'])){
         $devllo_event_route = sanitize_text_field( $_POST['route'] );
@@ -270,7 +262,7 @@ class Devllo_Events_Posts_Admin {
         $devllo_event_state = sanitize_text_field( $_POST['administrative_area_level_1'] );
         }
         if (isset($_POST['postal_code'])){
-        $devllo_event_zip = sanitize_text_field( $_POST['postal_code'] );
+        $devllo_event_zip = intval( $_POST['postal_code'] );
         }
         if (isset($_POST['country'])){
         $devllo_event_country = sanitize_text_field( $_POST['country'] );
@@ -340,16 +332,16 @@ class Devllo_Events_Posts_Admin {
         $metabox_ids = array( '_start', '_end' );
 
         foreach ($metabox_ids as $key ) {
-            $events_meta[$key . '_month'] = $_POST[$key . '_month'];
-            $events_meta[$key . '_day'] = $_POST[$key . '_day'];
+            $events_meta[$key . '_month'] = sanitize_text_field( $_POST[$key . '_month']);
+            $events_meta[$key . '_day'] = sanitize_text_field( $_POST[$key . '_day']);
                 if($_POST[$key . '_hour']<10){
-                     $events_meta[$key . '_hour'] = '0'.$_POST[$key . '_hour'];
+                     $events_meta[$key . '_hour'] = '0'.sanitize_text_field($_POST[$key . '_hour']);
                  } else {
-                       $events_meta[$key . '_hour'] = $_POST[$key . '_hour'];
+                       $events_meta[$key . '_hour'] = sanitize_text_field($_POST[$key . '_hour']);
                  }
-            $events_meta[$key . '_year'] = $_POST[$key . '_year'];
-            $events_meta[$key . '_hour'] = $_POST[$key . '_hour'];
-            $events_meta[$key . '_minute'] = $_POST[$key . '_minute'];
+            $events_meta[$key . '_year'] = sanitize_text_field($_POST[$key . '_year']);
+            $events_meta[$key . '_hour'] = sanitize_text_field($_POST[$key . '_hour']);
+            $events_meta[$key . '_minute'] = sanitize_text_field($_POST[$key . '_minute']);
             $events_meta[$key . '_eventtimestamp'] = $events_meta[$key . '_year'] . $events_meta[$key . '_month'] . $events_meta[$key . '_day'] . $events_meta[$key . '_hour'] . $events_meta[$key . '_minute'];
         }
 

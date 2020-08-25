@@ -9,21 +9,15 @@ defined( 'ABSPATH' ) || exit();
 
 wp_enqueue_style( 'calendar_css', DEVLLO_EVENTS_INC_URI. 'assets/css/main.css');	
 
-wp_enqueue_style( 'font_css', 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css');	
+wp_enqueue_style( 'font_css', DEVLLO_EVENTS_INC_URI. 'assets/css/all.css');	
 
-wp_enqueue_style('full_calendar_bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.css');
+wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');	
 
 wp_register_script( 'fullcalendar_js', DEVLLO_EVENTS_INC_URI. 'assets/js/main.js' );
 wp_enqueue_script( 'fullcalendar_js');
 
 wp_register_script( 'fullcalendar_min_js', DEVLLO_EVENTS_INC_URI. 'assets/js/main.min.js' );
 wp_enqueue_script( 'fullcalendar_min_js');  
-
-wp_register_script( 'jquery_min_js_online', 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' );
-wp_enqueue_script( 'jquery_min_js_online');
-
-wp_register_script( 'jquery_min_js', DEVLLO_EVENTS_INC_URI. 'assets/js/jquery.min.js' );
-wp_enqueue_script( 'jquery_min_js');
 
 
 get_header(); 
@@ -68,9 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <div id='calendar'></div>
-<?php
-// After Calendar Action Hook
-?>
+
 
     </div><!-- #primary -->
   </div>
