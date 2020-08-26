@@ -24,9 +24,11 @@ class Devllo_Events_Template_Display {
 
     }
 
-    function display_calendar($content = ""){
+    function display_calendar($content = null){
       if (!is_admin()){
       global $post;
+      ob_start();
+
       $args = array( 
            'post_type' => 'devllo_event', 
            'post_status' => 'publish', 
@@ -64,9 +66,14 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
 </script>
+<div id='calendar'></div>
 
-<?php 
-return "<div id='calendar'></div>" . $content;
+<?php
+
+$content = ob_get_contents();
+ob_end_clean();
+
+return $content;
 }
   }
 }

@@ -129,10 +129,6 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
       <?php endwhile; // end of the loop. 
 ?>
 
-
-    
-
-
         </div> <!-- /row -->
 
       </div><!-- #container -->
