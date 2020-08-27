@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Events by Devllo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 21:22+0000\n"
-"PO-Revision-Date: 2020-08-23 21:22+0000\n"
+"POT-Creation-Date: 2020-08-27 10:29+0000\n"
+"PO-Revision-Date: 2020-08-27 10:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: English (South Africa)\n"
 "Language: en_ZA\n"
@@ -17,216 +17,281 @@ msgstr ""
 #: includes/devllo-events-functions.php:126
 #: includes/devllo-events-functions.php:140
 msgid "Event Organiser"
-msgstr ""
+msgstr "Event Organiser"
 
 #: includes/devllo-events-functions.php:129
 msgid "Add Event"
-msgstr ""
+msgstr "Add Event"
 
 #: includes/devllo-events-functions.php:132
 msgid "Event Description"
-msgstr ""
+msgstr "Event Description"
 
 #: includes/class-devllo-events-post-types.php:58
 msgid "Add New Event"
-msgstr ""
+msgstr "Add New Event"
 
 #: includes/class-devllo-events-post-types.php:59
 msgid "New Event"
-msgstr ""
+msgstr "New Event"
 
 #: includes/class-devllo-events-post-types.php:60
 msgid "Edit Event"
-msgstr ""
+msgstr "Edit Event"
 
 #: includes/class-devllo-events-post-types.php:61
 msgid "View Event"
-msgstr ""
+msgstr "View Event"
 
 #: includes/class-devllo-events-post-types.php:62
 msgid "Events"
-msgstr ""
+msgstr "Events"
 
 #: includes/class-devllo-events-post-types.php:63
 msgid "Search Events"
-msgstr ""
+msgstr "Search Events"
 
 #: includes/class-devllo-events-post-types.php:64
 msgid "Parent Events:"
-msgstr ""
+msgstr "Parent Events:"
 
 #: includes/class-devllo-events-post-types.php:65
 msgid "No events found."
-msgstr ""
+msgstr "No events found."
 
 #: includes/class-devllo-events-post-types.php:66
 msgid "No events found in Trash."
-msgstr ""
+msgstr "No events found in Trash."
 
 #: includes/class-devllo-events-post-types.php:71
 msgid "Event post type."
-msgstr ""
+msgstr "Event post type."
 
 #: includes/class-devllo-events-post-types.php:76
 msgctxt "URL slug"
 msgid "event"
-msgstr ""
+msgstr "event"
 
 #: includes/class-devllo-events-post-types.php:145
 msgid "Search Event Tags"
-msgstr ""
+msgstr "Search Event Tags"
 
 #: includes/class-devllo-events-post-types.php:146
 msgid "All Event Tags"
-msgstr ""
+msgstr "All Event Tags"
 
 #: includes/class-devllo-events-post-types.php:147
 msgid "Parent Event Tags"
-msgstr ""
+msgstr "Parent Event Tags"
 
 #: includes/class-devllo-events-post-types.php:148
 msgid "Parent Event Tags:"
-msgstr ""
+msgstr "Parent Event Tags:"
 
 #: includes/class-devllo-events-post-types.php:149
 msgid "Edit Event Tag"
-msgstr ""
+msgstr "Edit Event Tag"
 
 #: includes/class-devllo-events-post-types.php:150
 msgid "Update Event Tag"
-msgstr ""
+msgstr "Update Event Tag"
 
 #: includes/class-devllo-events-post-types.php:151
 msgid "Add New Event Tag"
-msgstr ""
+msgstr "Add New Event Tag"
 
 #: includes/class-devllo-events-post-types.php:152
 msgid "New Event Tag Name"
-msgstr ""
+msgstr "New Event Tag Name"
 
 #: includes/class-devllo-events-post-types.php:153
 msgid "Event Tags"
-msgstr ""
+msgstr "Event Tags"
 
 #: includes/class-devllo-events-post-types.php:171
 msgid "Search Event Types"
-msgstr ""
+msgstr "Search Event Types"
 
 #: includes/class-devllo-events-post-types.php:172
 msgid "All Event Types"
-msgstr ""
+msgstr "All Event Types"
 
 #: includes/class-devllo-events-post-types.php:173
 msgid "Parent Event Types"
-msgstr ""
+msgstr "Parent Event Types"
 
 #: includes/class-devllo-events-post-types.php:174
 msgid "Parent Event Types:"
-msgstr ""
+msgstr "Parent Event Types:"
 
 #: includes/class-devllo-events-post-types.php:175
 msgid "Edit Event Type"
-msgstr ""
+msgstr "Edit Event Type"
 
 #: includes/class-devllo-events-post-types.php:176
 msgid "Update Event Type"
-msgstr ""
+msgstr "Update Event Type"
 
 #: includes/class-devllo-events-post-types.php:177
 msgid "Add New Event Type"
-msgstr ""
+msgstr "Add New Event Type"
 
 #: includes/class-devllo-events-post-types.php:178
 msgid "New Event Type Name"
-msgstr ""
+msgstr "New Event Type Name"
 
 #: includes/class-devllo-events-post-types.php:179
 msgid "Event Types"
-msgstr ""
+msgstr "Event Types"
 
 #: includes/class-devllo-events-post-types.php:197
 msgid "Search Categories"
-msgstr ""
+msgstr "Search Categories"
 
 #: includes/class-devllo-events-post-types.php:198
 msgid "All Event Categories"
-msgstr ""
+msgstr "All Event Categories"
 
 #: includes/class-devllo-events-post-types.php:199
 msgid "Parent Category"
-msgstr ""
+msgstr "Parent Category"
 
 #: includes/class-devllo-events-post-types.php:200
 msgid "Parent Category:"
-msgstr ""
+msgstr "Parent Category:"
 
 #: includes/class-devllo-events-post-types.php:201
 msgid "Edit Category"
-msgstr ""
+msgstr "Edit Category"
 
 #: includes/class-devllo-events-post-types.php:202
 msgid "Update Category"
-msgstr ""
+msgstr "Update Category"
 
 #: includes/class-devllo-events-post-types.php:203
 msgid "Add New Event Category"
-msgstr ""
+msgstr "Add New Event Category"
 
 #: includes/class-devllo-events-post-types.php:204
 msgid "New Event Category Name"
-msgstr ""
+msgstr "New Event Category Name"
 
 #: includes/class-devllo-events-post-types.php:205
 msgid "Event Categories"
-msgstr ""
+msgstr "Event Categories"
 
 #: admin/class-devllo-events-admin-menu.php:38
 msgid "Devllo Events Settings"
-msgstr ""
+msgstr "Devllo Events Settings"
 
 #: admin/class-devllo-events-admin-menu.php:38
 msgid "Settings"
-msgstr ""
+msgstr "Settings"
 
-#: admin/class-devllo-events-admin-settings.php:71
+#: admin/class-devllo-events-admin-settings.php:63
+#: admin/class-devllo-events-admin-settings.php:76
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
-#: admin/class-devllo-events-admin-settings.php:96
+#: admin/class-devllo-events-admin-settings.php:64
+#: admin/class-devllo-events-admin-settings.php:103
 msgid "Pages"
-msgstr ""
+msgstr "Pages"
+
+#: admin/class-devllo-events-admin-settings.php:87
+msgid "Google Map API Key"
+msgstr "Google Map API Key"
+
+#: admin/class-devllo-events-admin-settings.php:115
+#: admin/class-devllo-events-admin-settings.php:120
+msgid "Events Page:"
+msgstr "Events Page:"
+
+#: admin/class-devllo-events-admin-settings.php:127
+#: admin/class-devllo-events-admin-settings.php:132
+msgid "Calendar Page:"
+msgstr "Calendar Page:"
 
 #: admin/class-devllo-events-posts-admin.php:64
+#: templates/single-devllo_event.php:120
 msgid "Event Location"
-msgstr ""
+msgstr "Event Location"
 
 #: admin/class-devllo-events-posts-admin.php:69
 msgid "Event Online Link:"
-msgstr ""
+msgstr "Event Online Link:"
 
 #: admin/class-devllo-events-posts-admin.php:72
 msgid "Location Name:"
-msgstr ""
+msgstr "Location Name:"
 
 #: admin/class-devllo-events-posts-admin.php:77
 msgid "Address"
-msgstr ""
+msgstr "Address"
+
+#: admin/class-devllo-events-posts-admin.php:93
+msgid "Street Address:"
+msgstr "Street Address:"
+
+#: admin/class-devllo-events-posts-admin.php:97
+msgid "Route:"
+msgstr "Route:"
+
+#: admin/class-devllo-events-posts-admin.php:103
+msgid "City:"
+msgstr "City:"
+
+#: admin/class-devllo-events-posts-admin.php:107
+msgid "State:"
+msgstr "State:"
+
+#: admin/class-devllo-events-posts-admin.php:113
+msgid "Zip Code:"
+msgstr "Zip Code:"
+
+#: admin/class-devllo-events-posts-admin.php:117
+msgid "Country:"
+msgstr "Country:"
 
 #: admin/class-devllo-events-posts-admin.php:129
 msgid "Event Website:"
-msgstr ""
+msgstr "Event Website:"
 
-#: admin/class-devllo-events-posts-admin.php:376
+#: admin/class-devllo-events-posts-admin.php:368
 msgid "Start Date and Time"
-msgstr ""
+msgstr "Start Date and Time"
 
-#: admin/class-devllo-events-posts-admin.php:386
+#: admin/class-devllo-events-posts-admin.php:378
 msgid "End Date and Time"
-msgstr ""
+msgstr "End Date and Time"
+
+#: templates/single-devllo_event.php:90
+msgid "Event Details"
+msgstr "Event Details"
+
+#: templates/single-devllo_event.php:94
+msgid "Event Date"
+msgstr "Event Date"
+
+#: templates/single-devllo_event.php:95
+msgid "Event Start Date:"
+msgstr "Event Start Date:"
+
+#: templates/single-devllo_event.php:99
+msgid "Event End Date:"
+msgstr "Event End Date:"
+
+#: templates/single-devllo_event.php:116
+msgid "Event Website"
+msgstr "Event Website"
+
+#: templates/single-devllo_event.php:118
+msgid "Event Online Link"
+msgstr "Event Online Link"
 
 #. Name of the plugin
 msgid "Events by Devllo"
-msgstr ""
+msgstr "Events by Devllo"
 
 #. Description of the plugin
 msgid ""
@@ -234,12 +299,18 @@ msgid ""
 "show event locations on map, link to online Event locations. It also "
 "integrates with FullCalendar to show a calendar with all events."
 msgstr ""
+"This is a simple Event Manager plugin for adding and listing your events, "
+"show event locations on map, link to online Event locations. It also "
+"integrates with FullCalendar to show a calendar with all events."
 
 #. URI of the plugin
-#. Author URI of the plugin
 msgid "https://devlloplugins.com/"
-msgstr ""
+msgstr "https://devlloplugins.com/"
 
 #. Author of the plugin
-msgid "Devllo"
-msgstr ""
+msgid "Devllo Plugins"
+msgstr "Devllo Plugins"
+
+#. Author URI of the plugin
+msgid "https://devllo.com/"
+msgstr "https://devllo.com/"

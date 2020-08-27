@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Events by Devllo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 21:22+0000\n"
+"POT-Creation-Date: 2020-08-27 10:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -189,15 +189,32 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/class-devllo-events-admin-settings.php:71
+#: admin/class-devllo-events-admin-settings.php:63
+#: admin/class-devllo-events-admin-settings.php:76
 msgid "Options"
 msgstr ""
 
-#: admin/class-devllo-events-admin-settings.php:96
+#: admin/class-devllo-events-admin-settings.php:64
+#: admin/class-devllo-events-admin-settings.php:103
 msgid "Pages"
 msgstr ""
 
+#: admin/class-devllo-events-admin-settings.php:87
+msgid "Google Map API Key"
+msgstr ""
+
+#: admin/class-devllo-events-admin-settings.php:115
+#: admin/class-devllo-events-admin-settings.php:120
+msgid "Events Page:"
+msgstr ""
+
+#: admin/class-devllo-events-admin-settings.php:127
+#: admin/class-devllo-events-admin-settings.php:132
+msgid "Calendar Page:"
+msgstr ""
+
 #: admin/class-devllo-events-posts-admin.php:64
+#: templates/single-devllo_event.php:120
 msgid "Event Location"
 msgstr ""
 
@@ -213,16 +230,64 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+#: admin/class-devllo-events-posts-admin.php:93
+msgid "Street Address:"
+msgstr ""
+
+#: admin/class-devllo-events-posts-admin.php:97
+msgid "Route:"
+msgstr ""
+
+#: admin/class-devllo-events-posts-admin.php:103
+msgid "City:"
+msgstr ""
+
+#: admin/class-devllo-events-posts-admin.php:107
+msgid "State:"
+msgstr ""
+
+#: admin/class-devllo-events-posts-admin.php:113
+msgid "Zip Code:"
+msgstr ""
+
+#: admin/class-devllo-events-posts-admin.php:117
+msgid "Country:"
+msgstr ""
+
 #: admin/class-devllo-events-posts-admin.php:129
 msgid "Event Website:"
 msgstr ""
 
-#: admin/class-devllo-events-posts-admin.php:376
+#: admin/class-devllo-events-posts-admin.php:368
 msgid "Start Date and Time"
 msgstr ""
 
-#: admin/class-devllo-events-posts-admin.php:386
+#: admin/class-devllo-events-posts-admin.php:378
 msgid "End Date and Time"
+msgstr ""
+
+#: templates/single-devllo_event.php:90
+msgid "Event Details"
+msgstr ""
+
+#: templates/single-devllo_event.php:94
+msgid "Event Date"
+msgstr ""
+
+#: templates/single-devllo_event.php:95
+msgid "Event Start Date:"
+msgstr ""
+
+#: templates/single-devllo_event.php:99
+msgid "Event End Date:"
+msgstr ""
+
+#: templates/single-devllo_event.php:116
+msgid "Event Website"
+msgstr ""
+
+#: templates/single-devllo_event.php:118
+msgid "Event Online Link"
 msgstr ""
 
 #. Name of the plugin
@@ -237,10 +302,13 @@ msgid ""
 msgstr ""
 
 #. URI of the plugin
-#. Author URI of the plugin
 msgid "https://devlloplugins.com/"
 msgstr ""
 
 #. Author of the plugin
-msgid "Devllo"
+msgid "Devllo Plugins"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://devllo.com/"
 msgstr ""
