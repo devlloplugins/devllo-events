@@ -18,18 +18,13 @@ You can display events list using the shortcode [devllo-events] and the Calendar
 == Installation ==
 You can install directly from the Plugin Repository using the Plugins system in WordPress.
 
-=MANUAL INSTALLATION=
+= MANUAL INSTALLATION =
 Upload devllo-events.php to the /wp-content/plugins/ directory
 Activate the plugin through the ‘Plugins’ menu in WordPress
 
-=AFTER INSTALLATION=
+= AFTER INSTALLATION =
 The plugin will automatically create the pages Events and Calendar, if those pages don\'t already exist and add the shortcodes [devllo-events] and [devllo-calendar].
 You can manually edit the pages to add these shortcodes.
-
-== Frequently Asked Questions ==
-= I found a bug in the plugin. =
-Please post it in the [WordPress support forum](https://wordpress.org/support/plugin/devllo-events/) and we'll look into it as soosn as possible.
-
 
 == Screenshots ==
 1. Add Event Page showing Event fields.
@@ -43,7 +38,10 @@ Under Events -> Settings
 This is where you add the Google Map API
 
 = How do I display the events list and Calendar? =
-The plugin will automatically create the pages Events and Calendar, if those pages don\'t already exist and add the shortcodes [devllo-events] and [devllo-calendar].
+The plugin will automatically create the pages Events and Calendar, if those pages don't already exist and add the shortcodes [devllo-events] and [devllo-calendar].
+
+= I found a bug in the plugin. =
+Please post it in the [WordPress support forum](https://wordpress.org/support/plugin/devllo-events/) and we'll look into it as soosn as possible.
 
 
 == Changelog ==
