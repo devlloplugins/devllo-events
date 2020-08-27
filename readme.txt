@@ -45,5 +45,8 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 
 
 == Changelog ==
+= 0.3.1 =
+Update Readme and banner for initial release.
+
 = 0.3 =
 Initial release.
