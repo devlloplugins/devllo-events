@@ -49,6 +49,8 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
             $this->define_constants();
             $this->includes();
             $this->init_hooks();
+            add_action( 'plugins_loaded', array($this, 'devllo_events_load_plugin_text_domain') );
+
 
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'devllo_events_enqueue_scripts' ) );
@@ -128,7 +130,7 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
         }
 
         // Load Text Domain
-        public function text_domain() {
+        /* public function text_domain() {
             // Get mo file
             $text_domain = 'devllo-events';
             $locale      = apply_filters( 'plugin_locale', get_locale(), $text_domain );
@@ -141,8 +143,11 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
             } else {
                 load_textdomain( $text_domain, DEVLLO_EVENTS_PATH . '/languages/' . $mo_file );
             }
-        }
-    
+        } */
+
+        function devllo_events_load_plugin_text_domain() {
+            load_plugin_textdomain( ' devllo-events', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+        }    
 
         /**
          * Includes
