@@ -43,10 +43,6 @@ class Devllo_Events_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	/*
-	public static function activate() {
-echo 'working';
-	}*/
 
 	public static function devllo_events_activate() { 
 		// Trigger our function that registers the custom post type plugin.
