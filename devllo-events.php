@@ -177,7 +177,7 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
         */
 		public function loaded() {
 			// load text domain
-			$this->text_domain();
+			//$this->text_domain();
 			$this->_session = new Devllo_Events_Session();
 
 			do_action( 'devllo_events_init', $this );
