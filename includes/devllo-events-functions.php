@@ -49,9 +49,43 @@ class Devllo_Events_Functions {
     add_filter( 'post_row_actions', array( $this, 'devllo_event_duplicate_post_link' ), 10, 2);
 
 
+    add_action( 'wp_before_admin_bar_render', array($this, 'devllo_events_toolbar',) );
+
+
+
     
 
     }
+
+// Add Toolbar Menus
+function devllo_events_toolbar() {
+	global $wp_admin_bar;
+
+	$args = array(
+		'id'     => 'devllo-events-menu',
+		'title'  => __( 'Events', 'devllo-events' ),
+		'href'	=>	'edit.php?post_type=devllo_event'
+	);
+	$wp_admin_bar->add_menu( $args );
+
+	$args = array(
+		'id'     => 'devllo-events-child-menu',
+		'parent' => 'devllo-events-menu',
+		'title'  => __( 'Add Event', 'devllo-events' ),
+		'href'	=>	'post-new.php?post_type=devllo_event'
+	);
+
+	$wp_admin_bar->add_menu( $args );
+
+	$args = array(
+		'id'     => 'devllo-events-settings-menu',
+		'parent' => 'devllo-events-menu',
+		'title'  => __( 'Settings', 'devllo-events' ),
+		'href'	=>	'edit.php?post_type=devllo_event&page=devllo-events-settings'
+	);
+	$wp_admin_bar->add_menu( $args );
+
+}
 
 
 
@@ -109,7 +143,7 @@ function add_devllo_event_organiser(){
           'edit_devllo_events'        => true, // Allows user to edit their own posts
          // 'edit_others_p' => true, // Allows user to edit others posts too
           'publish_devllo_events' => true, // Allows the user to publish posts
-          'manage_categories' => true, // Allows user to manage post categories
+          'manage_devllo_event_categories' => true, // Allows user to manage post categories
       )
       );   
 }
