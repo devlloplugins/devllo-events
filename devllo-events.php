@@ -1,13 +1,15 @@
 <?php
 /*
-    Plugin Name: Events by Devllo
-    Plugin URI: https://devlloplugins.com/
-    Description: This is a simple Event Manager plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
-    Author: Devllo Plugins
-    Version: 0.3.2
-    Author URI: https://devllo.com/
-    Text Domain: devllo-events
-    Domain Path: /languages
+ *   Plugin Name: Events by Devllo
+ *   Plugin URI: https://devlloplugins.com/
+ *   Description: This is a simple Event Manager plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
+ *   Author: Devllo Plugins
+ *   Version: 0.3.2.1
+ *   Author URI: https://devllo.com/
+ *   License:    GPL-2.0+
+ *   License URI:  http://www.gnu.org/licenses/gpl-2.0.txt
+ *   Text Domain: devllo-events
+ *   Domain Path: /languages
  */
 
 // Exit if accessed directly
@@ -49,6 +51,8 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
             $this->define_constants();
             $this->includes();
             $this->init_hooks();
+            add_action( 'plugins_loaded', array($this, 'devllo_events_load_plugin_text_domain') );
+
 
             add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'devllo_events_enqueue_scripts' ) );
@@ -128,7 +132,7 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
         }
 
         // Load Text Domain
-        public function text_domain() {
+        /* public function text_domain() {
             // Get mo file
             $text_domain = 'devllo-events';
             $locale      = apply_filters( 'plugin_locale', get_locale(), $text_domain );
@@ -141,8 +145,11 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
             } else {
                 load_textdomain( $text_domain, DEVLLO_EVENTS_PATH . '/languages/' . $mo_file );
             }
-        }
-    
+        } */
+
+        function devllo_events_load_plugin_text_domain() {
+            load_plugin_textdomain( ' devllo-events', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+        }    
 
         /**
          * Includes
@@ -172,7 +179,7 @@ if ( ! class_exists( 'Devllo_Events' ) ) {
         */
 		public function loaded() {
 			// load text domain
-			$this->text_domain();
+			//$this->text_domain();
 			$this->_session = new Devllo_Events_Session();
 
 			do_action( 'devllo_events_init', $this );
