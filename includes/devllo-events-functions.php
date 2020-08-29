@@ -48,11 +48,40 @@ class Devllo_Events_Functions {
 
     add_filter( 'post_row_actions', array( $this, 'devllo_event_duplicate_post_link' ), 10, 2);
 
-
+    add_action( 'wp_before_admin_bar_render', array($this, 'devllo_events_toolbar',) );
     
 
-    }
+	}
+	
+	// Add Toolbar Menus
+function devllo_events_toolbar() {
+	global $wp_admin_bar;
 
+	$args = array(
+		'id'     => 'devllo-events-menu',
+		'title'  => __( 'Events', 'devllo-events' ),
+		'href'	=>	'edit.php?post_type=devllo_event'
+	);
+	$wp_admin_bar->add_menu( $args );
+
+	$args = array(
+		'id'     => 'devllo-events-child-menu',
+		'parent' => 'devllo-events-menu',
+		'title'  => __( 'Add Event', 'devllo-events' ),
+		'href'	=>	'post-new.php?post_type=devllo_event'
+	);
+
+	$wp_admin_bar->add_menu( $args );
+
+	$args = array(
+		'id'     => 'devllo-events-settings-menu',
+		'parent' => 'devllo-events-menu',
+		'title'  => __( 'Settings', 'devllo-events' ),
+		'href'	=>	'edit.php?post_type=devllo_event&page=devllo-events-settings'
+	);
+	$wp_admin_bar->add_menu( $args );
+
+}
 
 
    //  Load Event Archive Template 
@@ -70,20 +99,6 @@ class Devllo_Events_Functions {
 		$template = DEVLLO_EVENTS_TEMPLATES . 'archive-devllo_event.php';
 	return $template;
 }
- 
- /*
-//  Load Event Page Template
-function load_single_event_template( $template ) {
-    global $post;
-
-    if ( 'devllo_event' === $post->post_type ) {
-    //
-        return DEVLLO_EVENTS_TEMPLATES . 'single-devllo_event.php';
-    }
-
-    return $template;
-}
-*/
 
 //  Load Event Page Template
 
@@ -100,16 +115,14 @@ function load_single_event_template($single_template){
 function add_devllo_event_organiser(){
 
 
-    add_role('devllo_event_organiser', __(
-      'Event Organiser'),
+    add_role('devllo_event_organiser', __('Event Organiser', 'devllo-event'),
       array(
-          'level_2'         => true,
-          'read'            => true, // Allows a user to read
-          'create_devllo_events'      => true, // Allows user to create new posts
-          'edit_devllo_events'        => true, // Allows user to edit their own posts
-         // 'edit_others_p' => true, // Allows user to edit others posts too
-          'publish_devllo_events' => true, // Allows the user to publish posts
-          'manage_categories' => true, // Allows user to manage post categories
+        'level_2'         => true,
+        'read'            => true, // Allows a user to read
+        'create_devllo_events'      => true, // Allows user to create new posts
+		'edit_devllo_events'        => true, // Allows user to edit their own posts
+		'publish_devllo_events' => true, // Allows the user to publish posts
+		'manage_devllo_event_categories' => true, // Allows user to manage post categories
       )
       );   
 }
