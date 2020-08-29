@@ -27,7 +27,7 @@ class Devllo_Events_Posts_Admin {
 	public function add_metabox() {  
         add_meta_box(
             'devllo_events_details',
-            __( 'Event Details', 'textdomain' ),
+            __( 'Event Details', 'devllo-events' ),
             array( $this, 'render_metabox' ),
             'devllo_event',
             'advanced',

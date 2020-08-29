@@ -40,6 +40,8 @@ defined( 'ABSPATH' ) || exit;
 		add_action( 'init', array( $this, 'register_post_type' ), 0 );
 		add_action( 'init', array( $this, 'register_taxonomies' ), 0 );
 	//	add_action( 'init', array( $this, 'register_location_post_type' ), 0 );
+		add_action( 'admin_init', array($this, 'add_devllo_event_caps'));
+
 		
     }
 
@@ -75,7 +77,17 @@ defined( 'ABSPATH' ) || exit;
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => _x( 'event', 'URL slug', 'devllo-events' ), 'with_front' => false ),
 			//'taxonomies'         => array( 'devllo_event_category' ),
-			//'capability_type'    => 'devllo_event',
+			'capability_type'    => 'post',
+			'capabilities' => array(
+		        'edit_post' => 'edit_devllo_event',
+		        'edit_posts' => 'edit_devllo_events',
+		        'edit_others_posts' => 'edit_other_devllo_events',
+		        'publish_posts' => 'publish_devllo_events',
+		        'read_post' => 'read_devllo_event',
+		        'read_private_posts' => 'read_private_devllo_events',
+		        'delete_post' => 'delete_devllo_event',
+		        'manage_categories' => 'manage_devllo_event_categories'
+    								),
 			'map_meta_cap'       => true,
 			'has_archive'        => true,
 			'hierarchical'       => true,
@@ -86,6 +98,19 @@ defined( 'ABSPATH' ) || exit;
 		);
         
 		register_post_type( 'devllo_event', $args );
+	}
+
+	function add_devllo_event_caps() {
+			// gets the administrator role
+			$admins = get_role( 'administrator' );
+		
+			$admins->add_cap( 'edit_devllo_event' ); 
+			$admins->add_cap( 'edit_devllo_events' ); 
+			$admins->add_cap( 'edit_other_devllo_events' ); 
+			$admins->add_cap( 'publish_devllo_events' ); 
+			$admins->add_cap( 'read_devllo_event' ); 
+			$admins->add_cap( 'read_private_devllo_events' ); 
+			$admins->add_cap( 'delete_devllo_event' ); 
 	}
 
 
