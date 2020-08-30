@@ -60,7 +60,7 @@ function devllo_events_toolbar() {
 	$args = array(
 		'id'     => 'devllo-events-menu',
 		'title'  => __( 'Events', 'devllo-events' ),
-		'href'	=>	'edit.php?post_type=devllo_event'
+		'href'	=>	admin_url('edit.php?post_type=devllo_event')
 	);
 	$wp_admin_bar->add_menu( $args );
 
@@ -68,7 +68,7 @@ function devllo_events_toolbar() {
 		'id'     => 'devllo-events-child-menu',
 		'parent' => 'devllo-events-menu',
 		'title'  => __( 'Add Event', 'devllo-events' ),
-		'href'	=>	'post-new.php?post_type=devllo_event'
+		'href'	=>	admin_url('post-new.php?post_type=devllo_event')
 	);
 
 	$wp_admin_bar->add_menu( $args );
@@ -77,7 +77,7 @@ function devllo_events_toolbar() {
 		'id'     => 'devllo-events-settings-menu',
 		'parent' => 'devllo-events-menu',
 		'title'  => __( 'Settings', 'devllo-events' ),
-		'href'	=>	'edit.php?post_type=devllo_event&page=devllo-events-settings'
+		'href'	=>	admin_url('edit.php?post_type=devllo_event&page=devllo-events-settings')
 	);
 	$wp_admin_bar->add_menu( $args );
 

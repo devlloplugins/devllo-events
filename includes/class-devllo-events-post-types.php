@@ -166,7 +166,7 @@ defined( 'ABSPATH' ) || exit;
 
         $labels = array(
 		'name'              => _x( 'Event Tags', 'devllo-events' ),
-		'singular_name'     => _x( 'Event Tag', 'tdevllo-events' ),
+		'singular_name'     => _x( 'Event Tag', 'devllo-events' ),
 		'search_items'      => __( 'Search Event Tags', 'devllo-events' ),
 		'all_items'         => __( 'All Event Tags', 'devllo-events' ),
 		'parent_item'       => __( 'Parent Event Tags', 'devllo-events' ),
