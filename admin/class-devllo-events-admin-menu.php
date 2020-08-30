@@ -36,7 +36,7 @@ class Devllo_Events_Admin_Menu {
 			}
 		}
         add_submenu_page( 'edit.php?post_type=devllo_event', __('Devllo Events Settings', 'devllo-events'), __('Settings', 'devllo-events'), 'manage_options', 'devllo-events-settings', array( 'Devllo_Events_Admin_Settings', 'devllo_events_settings_page'  )); 
-
+		do_action('devllo_events_admin_menu_item');
 	}
 	
     /**

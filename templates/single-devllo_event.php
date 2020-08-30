@@ -87,11 +87,11 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
             </div>
 
             <div class="event-details">
-              <h2><?php _e('Event Details', 'devllo-events') ?></h2>
+              <h3><?php _e('Event Details', 'devllo-events') ?></h3>
               <p class="lead"><?php the_content(); ?></p>
 
               <div class="event-date-time">
-                <h2><?php _e('Event Date', 'devllo-events') ?></h2>
+                <h3><?php _e('Event Date', 'devllo-events') ?></h3>
                 <p><?php _e('Event Start Date:', 'devllo-events') ?>
                   <?php echo $startweekday . ', ' . $wp_locale->get_month($startmonth) . ' ' . get_post_meta( $post->ID, '_start_day', true ). ', ' . get_post_meta($post->ID, '_start_hour', true) . ':' . get_post_meta($post->ID, '_start_minute', true);?>
                   </p> 
@@ -101,6 +101,9 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                   </p> 
               </div>
             </div>
+
+            <div><?php do_action('after_main_single_event'); ?></div>
+
 
             <div class="event-comments">
               <div class="card my-4">
@@ -113,15 +116,16 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
       <div class="col-md-4">
               <div class="event-location">
-                <h2><?php _e('Event Website', 'devllo-events') ?></h2>
+                <h3><?php _e('Event Website', 'devllo-events') ?></h3>
                 <p><a href="<?php echo esc_url($url); ?>"><?php echo esc_attr($url); ?></a></p>
-                <h2><?php _e('Event Online Link', 'devllo-events') ?></h2>
+                <h3><?php _e('Event Online Link', 'devllo-events') ?></h3>
                 <p><a href="<?php echo esc_url($event_link) ?>"><?php echo esc_attr($event_link); ?></a></p>
-                <h2><?php _e('Event Location', 'devllo-events') ?></h2>
+                <h3><?php _e('Event Location', 'devllo-events') ?></h3>
                 <p><?php echo esc_attr($location_name); ?></p>
               <p><?php echo esc_attr($map_location); ?></p>
               <div id="map"></div>
               </div>
+              <div><?php do_action('after_side_single_event'); ?></div>
       </div>
 
 

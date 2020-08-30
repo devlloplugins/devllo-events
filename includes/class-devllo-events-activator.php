@@ -31,10 +31,6 @@ class Devllo_Events_Activator {
 		//add_action( 'init', array( $this, 'pluginprefix_setup_post_type' ));
 
 		add_action( 'admin_init', array( $this, 'load_plugin' ) );
-
-
-
-
 	}
 
 	/**
@@ -45,12 +41,11 @@ class Devllo_Events_Activator {
 	 */
 
 	public static function devllo_events_activate() { 
-		// Trigger our function that registers the custom post type plugin.
-		// Clear the permalinks after the post type has been registered.
+		add_option( 'Activated_Plugin', 'devllo-event' );
 		
-	//	add_action('init', 'Devllo_Events_Post_Types, register_post_type');
+		$devllo_events_current_version = 0.4;
 
-        add_option( 'Activated_Plugin', 'devllo-event' );
+		update_option( 'devllo_events_current_version' , $devllo_events_current_version, true);
     }
 
     function load_plugin() {
