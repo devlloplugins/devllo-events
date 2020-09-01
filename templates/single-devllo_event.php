@@ -116,15 +116,27 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
       <div class="col-md-4">
               <div class="event-location">
+                <?php if(!empty($url)){ ?>
                 <h3><?php _e('Event Website', 'devllo-events') ?></h3>
                 <p><a href="<?php echo esc_url($url); ?>"><?php echo esc_attr($url); ?></a></p>
+                <?php } ?>
+
+                <?php if(!empty($event_link)){ ?>
                 <h3><?php _e('Event Online Link', 'devllo-events') ?></h3>
                 <p><a href="<?php echo esc_url($event_link) ?>"><?php echo esc_attr($event_link); ?></a></p>
+                <?php } ?>
+
+                <?php if(!empty($location_name)){ ?>
                 <h3><?php _e('Event Location', 'devllo-events') ?></h3>
                 <p><?php echo esc_attr($location_name); ?></p>
-              <p><?php echo esc_attr($map_location); ?></p>
-              <div id="map"></div>
+                <?php } ?>
+
+                <?php if(!empty($map_location)){ ?>
+                <p><?php echo esc_attr($map_location); ?></p>
+                <div id="map"></div>
+                <?php } ?>
               </div>
+
               <div><?php do_action('after_side_single_event'); ?></div>
       </div>
 

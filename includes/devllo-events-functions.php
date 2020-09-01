@@ -55,31 +55,34 @@ class Devllo_Events_Functions {
 	
 	// Add Toolbar Menus
 function devllo_events_toolbar() {
-	global $wp_admin_bar;
+	if( current_user_can('editor') || current_user_can('administrator') || current_user_can('devllo_event_organiser') ) {
 
-	$args = array(
-		'id'     => 'devllo-events-menu',
-		'title'  => __( 'Events', 'devllo-events' ),
-		'href'	=>	admin_url('edit.php?post_type=devllo_event')
-	);
-	$wp_admin_bar->add_menu( $args );
+		global $wp_admin_bar;
 
-	$args = array(
-		'id'     => 'devllo-events-child-menu',
-		'parent' => 'devllo-events-menu',
-		'title'  => __( 'Add Event', 'devllo-events' ),
-		'href'	=>	admin_url('post-new.php?post_type=devllo_event')
-	);
+		$args = array(
+			'id'     => 'devllo-events-menu',
+			'title'  => __( 'Events', 'devllo-events' ),
+			'href'	=>	admin_url('edit.php?post_type=devllo_event')
+		);
+		$wp_admin_bar->add_menu( $args );
 
-	$wp_admin_bar->add_menu( $args );
+		$args = array(
+			'id'     => 'devllo-events-child-menu',
+			'parent' => 'devllo-events-menu',
+			'title'  => __( 'Add Event', 'devllo-events' ),
+			'href'	=>	admin_url('post-new.php?post_type=devllo_event')
+		);
 
-	$args = array(
-		'id'     => 'devllo-events-settings-menu',
-		'parent' => 'devllo-events-menu',
-		'title'  => __( 'Settings', 'devllo-events' ),
-		'href'	=>	admin_url('edit.php?post_type=devllo_event&page=devllo-events-settings')
-	);
-	$wp_admin_bar->add_menu( $args );
+		$wp_admin_bar->add_menu( $args );
+
+		$args = array(
+			'id'     => 'devllo-events-settings-menu',
+			'parent' => 'devllo-events-menu',
+			'title'  => __( 'Settings', 'devllo-events' ),
+			'href'	=>	admin_url('edit.php?post_type=devllo_event&page=devllo-events-settings')
+		);
+		$wp_admin_bar->add_menu( $args );
+	}
 
 }
 
