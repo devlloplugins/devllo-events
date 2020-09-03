@@ -88,66 +88,18 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
       <!-- Column -->
       <div class="row">
+      <?php foreach( $posts as $post ) {   ?>
       <div class="col-md-4 on-hover">
         <div class="card border-0 mb-4">
           <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
           <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
+          <h5 class="font-weight-medium mt-3"><a href="<?php echo $url; ?>" class="text-decoration-none link"><?php echo $post->post_title; ?></a></h5>
           <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
           <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
         </div>
       </div>
-      <!-- Column -->
-      <div class="col-md-4 on-hover">
-        <div class="card border-0 mb-4">
-          <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
-          <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
-          <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
-        </div>
-      </div>
-      <!-- Column -->
-      <div class="col-md-4 on-hover">
-        <div class="card border-0 mb-4">
-          <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
-          <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
-          <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
-        </div>
-      </div>
-      <!-- Column -->
-      <div class="col-md-4 on-hover">
-        <div class="card border-0 mb-4">
-          <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
-          <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
-          <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
-        </div>
-      </div>
-      <!-- Column -->
-      <div class="col-md-4 on-hover">
-        <div class="card border-0 mb-4">
-          <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
-          <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
-          <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
-        </div>
-      </div>
-      <!-- Column -->
-      <div class="col-md-4 on-hover">
-        <div class="card border-0 mb-4">
-          <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute">Oct<span class="d-block">23</span></div>
-          <h5 class="font-weight-medium mt-3"><a href="#" class="text-decoration-none link">You should have eagle’s eye on new trends and techonogies</a></h5>
-          <p class="mt-3">Business Park, Opp. Corns Sam Restaurant, New Yoark, US</p>
-          <a href="#" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
-        </div>
-      </div>
-      <!-- Column -->
+      <?php } ?>
+      <!-- Column --> 
       </div>
   </div>
 </div>
