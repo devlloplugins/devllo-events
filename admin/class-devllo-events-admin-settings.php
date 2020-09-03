@@ -30,10 +30,15 @@ class Devllo_Events_Admin_Settings{
     }
 
     public function __construct() {
-      add_action( 'admin_init', array( $this, 'init_settings'  ) );
+	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
+	  
+	  $this->myplug_validate($input);
       
 
-    }
+	}
+	
+
+
 
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
@@ -43,6 +48,9 @@ class Devllo_Events_Admin_Settings{
 	  
     }
 
+	function myplug_validate($input) {
+		return array_map('wp_filter_nohtml_kses', (array)$input);
+	  }
 
     
     public static function devllo_events_settings_page(){
