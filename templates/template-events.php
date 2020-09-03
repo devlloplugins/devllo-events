@@ -48,6 +48,7 @@ class Devllo_Events_Template_Display {
      } 
 
  ?>
+ <?php if (get_option('devllo-events-template-radio') == 1){?>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -69,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id='calendar'></div>
 
 <?php
+ } elseif (get_option('devllo-events-template-radio') == 2 ){
+   echo 'Load Blog Template';
+ }
 
 $content = ob_get_contents();
 ob_end_clean();

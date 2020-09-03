@@ -142,6 +142,7 @@ class Devllo_Events_Admin_Settings{
             </table>
 			<p>Events Page Template</p>
 			Choose a template for the Events Page
+			<br/>
 		<input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template
         <input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template
           <?php
