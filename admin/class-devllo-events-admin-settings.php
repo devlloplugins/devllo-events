@@ -90,7 +90,7 @@ class Devllo_Events_Admin_Settings{
             ?>
 		<table class="table">
             <tr>
-			<td><?php _e('Google Map API Key', 'devllo-events'); ?></td>
+			<th style="text-align: left;"><?php _e('Google Map API Key', 'devllo-events'); ?></th>
 			</tr>
 
 			<tr>
@@ -99,7 +99,7 @@ class Devllo_Events_Admin_Settings{
 			</tr>
 
 			<tr>
-			<td><?php _e('Organisers', 'devllo-events'); ?></td></tr>
+			<th style="text-align: left;"><?php _e('Organisers', 'devllo-events'); ?></th></tr>
 
 			<tr>
 			<td><?php _e('Show Event Organiser on Events (Event Post Author defaults as Event Organiser)', 'devllo-events'); ?></td></tr>
