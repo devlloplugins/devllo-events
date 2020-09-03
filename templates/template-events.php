@@ -92,8 +92,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="row">
       <?php foreach( $posts as $post ) { 
          $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
-         $start_month = get_post_meta( $post->ID, '_start_month', true );
-         $start_month_abbr = $wp_locale->get_month_abbrev($start_month);
+         $start_month = $wp_locale->get_month(get_post_meta( $post->ID, '_start_month', true ));
+        // $start_month_abbr = $wp_locale->get_month_abbrev($start_month);
          $start_day = get_post_meta( $post->ID, '_start_day', true );
 
         ?>
