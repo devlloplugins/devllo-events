@@ -75,8 +75,10 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
  $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 ?>
         <?php 
-        echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>
-        <div class="event-organiser">Event Organiser<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
+        echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>';
+        if (get_option( 'devllo-events-organiser-checkbox' ) == 1){
+        echo '<div class="event-organiser">' . __('Event Organiser', 'devllo-events') . '<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
+        }
         get_template_part( 'content', 'page' ); ?>
 
         <div class="row">
