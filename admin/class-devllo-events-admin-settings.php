@@ -41,10 +41,10 @@ class Devllo_Events_Admin_Settings{
 
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
+	  register_setting(	'devllo-events-options', 'devllo-events-organiser-checkbox');	  
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-calendar-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-template-radio' );
-	  register_setting(	'devllo-events-pages', 'devllo-events-organiser-checkbox');	  
     }
 
     
@@ -92,9 +92,22 @@ class Devllo_Events_Admin_Settings{
             <tr>
 			<td><?php _e('Google Map API Key', 'devllo-events'); ?></td>
 			</tr>
+
 			<tr>
 			<?php $devlloapikey = get_option('devllo-map-api-key');?>
             <td><input name="devllo-map-api-key" type="text" class="regular-text" value="<?php if (isset($devlloapikey)) { echo esc_attr($devlloapikey); }?>"></td>
+			</tr>
+
+			<tr>
+			<td><?php _e('Organisers', 'devllo-events'); ?></td></tr>
+
+			<tr>
+			<td><?php _e('Show Event Organiser on Events (Event Post Author defaults as Event Organiser)', 'devllo-events'); ?></td></tr>
+		  	
+			<tr>
+		  	<td>
+		  	<input type="checkbox" name="devllo-events-organiser-checkbox" value="1" <?php checked(1, get_option('devllo-events-organiser-checkbox'), true); ?> /> 
+			</td>
 			</tr>
             </table>
            
@@ -161,10 +174,7 @@ class Devllo_Events_Admin_Settings{
 			<td></td>
 			</tr>
 			</table>
-          <p>Organisers</p>
-		  Show Event Organiser on Events (Event Post Author defaults as Event Organiser)
-		  <input type="checkbox" name="devllo-events-organiser-checkbox" value="1" <?php checked(1, get_option('devllo-events-organiser-checkbox'), true); ?> /> 
-		  <?php
+            <?php
         }
      			submit_button();
             ?>
