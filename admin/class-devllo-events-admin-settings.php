@@ -132,6 +132,21 @@ class Devllo_Events_Admin_Settings{
 			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_html($calendarpage); ?>"></td><td></td>
 			</tr>
 			<?php  } ?>
+
+			<h3>Events Page Template</h3>
+			<form method="post" action="options.php">
+  <?php
+  settings_fields('myplug_options_group');
+  $myplug_options = get_option('myplug_settings');
+  ?>
+  <input type="checkbox" name="myplug_settings[checkbox1]" value="1" <?php checked('1', $myplug_options['checkbox1']); ?> /><br />
+  <input type="text" class="regular-text" name="myplug_settings[text1]" value="<?php echo $myplug_options['text1']; ?>" /><br />
+  <input type="checkbox" name="myplug_settings[checkbox2]" value="1" <?php checked('1', $myplug_options['checkbox2']); ?> /><br />
+  <input type="text" class="regular-text" name="myplug_settings[text2]" value="<?php echo $myplug_options['text2']; ?>" /><br />
+  <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); ?> /><br />
+  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?> /><br />     
+  <?php submit_button(); ?>
+  </form>
 			
             </table>
           <?php
