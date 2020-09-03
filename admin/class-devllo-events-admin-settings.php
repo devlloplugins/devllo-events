@@ -114,7 +114,7 @@ class Devllo_Events_Admin_Settings{
 				return ( $loop_posts->have_posts() ? $loop_posts->posts[0] : false );
 			} ?>
 			<tr>
-			<th>Events</th>
+			<th style="text-align: left;">Events</th>
 			<td></td>
 			<td>
 			<?php   
@@ -129,7 +129,7 @@ class Devllo_Events_Admin_Settings{
 			</tr>
 
 			<tr>
-			<th>Calendar</th>
+			<th style="text-align: left;">Calendar</th>
 			<td></td>
 			<td>
 			<?php   
@@ -144,18 +144,23 @@ class Devllo_Events_Admin_Settings{
 			</tr>
 		
 			<tr>
-			<th>
+			<th style="text-align: left;">
 			<h3>Events Page Template</h3></th>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
 
-			<th>Choose a template for the Events Page</th>
-
+			<th style="text-align: left;">Choose a template for the Events Page</th>
+			<td></td>
+			<td></td>
+			</tr>
+			<tr>
 			<td><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template</td>
         	<td><input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template</td>
+			<td></td>
 			</tr>
+			</table>
           <p>Organisers</p>
 		  Show Event Organiser on Events (Event Post Author defaults as Event Organiser)
 		  <input type="checkbox" name="devllo-events-organiser-checkbox" value="1" <?php checked(1, get_option('devllo-events-organiser-checkbox'), true); ?> /> 
