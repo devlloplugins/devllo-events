@@ -102,7 +102,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
               </div>
             </div>
 
-            <div><?php do_action('after_main_single_event'); ?></div>
+            <div><?php do_action('devllo_events_after_main_single_event'); ?></div>
 
 
             <div class="event-comments">
@@ -137,7 +137,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 <?php } ?>
               </div>
 
-              <div><?php do_action('after_side_single_event'); ?></div>
+              <div><?php do_action('devllo_events_after_side_single_event'); ?></div>
       </div>
 
 

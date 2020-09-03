@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Column -->
       <div class="col-md-8 text-center">
         <h3 class="my-3">Events</h3>
-        <h6 class="subtitle font-weight-normal">You can relay on our amazing features list and also our customer services will be great experience for you without doubt</h6>
+        <h6 class="subtitle font-weight-normal"><?php do_action('devllo_events_blog_template_subtitle'); ?></h6>
       </div>
       <!-- Column -->
       <!-- Column -->

@@ -43,9 +43,7 @@ class Devllo_Events_Admin_Settings{
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-template-radio' );
-	  
-
-	  
+	  register_setting(	'devllo-events-pages', 'devllo-events-organiser-checkbox');	  
     }
 
     
@@ -145,7 +143,10 @@ class Devllo_Events_Admin_Settings{
 			<br/>
 		<input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template
         <input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template
-          <?php
+          <p>Organisers</p>
+		  Show Event Organiser on Events (Event Post Author defaults as Event Organiser)
+		  <input type="checkbox" name="devllo-events-organiser-checkbox" value="1" <?php checked(1, get_option('devllo-events-organiser-checkbox'), true); ?> /> 
+		  <?php
         }
      			submit_button();
             ?>
