@@ -92,14 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="row">
       <?php foreach( $posts as $post ) { 
          $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
-         $start_month = $wp_locale->get_month_abbrev(get_post_meta( $post->ID, '_start_month', true ));
+         $start_month = get_post_meta( $post->ID, '_start_month', true );
+         $start_month_abbr = $wp_locale->get_month_abbrev($start_month);
          $start_day = get_post_meta( $post->ID, '_start_day', true );
 
         ?>
       <div class="col-md-4 on-hover">
         <div class="card border-0 mb-4">
           <a href="<?php echo $url; ?>"><img class="card-img-top" src="<?php echo $featured_img_url; ?>" alt="<?php echo $post->post_title; ?>"></a>
-          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute"><?php echo $start_month; ?><span class="d-block"><?php echo $start_day;?></span></div>
+          <div class="date-pos bg-info-gradiant p-2 d-inline-block text-center rounded text-white position-absolute"><?php echo $start_month_abbr; ?><span class="d-block"><?php echo $start_day;?></span></div>
           <h5 class="font-weight-medium mt-3"><a href="<?php echo $url; ?>" class="text-decoration-none link"><?php echo $post->post_title; ?></a></h5>
           <p class="mt-3"><?php echo wp_strip_all_tags( get_the_excerpt(), true ); ?></p>
           <a href="<?php echo $url; ?>" class="text-decoration-none linking text-themecolor mt-2">Learn More</a>
