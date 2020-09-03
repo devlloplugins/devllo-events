@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <!-- Column -->
     </div>
       <!-- Column -->
+      <div class="row">
       <div class="col-md-4 on-hover">
         <div class="card border-0 mb-4">
           <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img3.jpg" alt="wrappixel kit"></a>
@@ -147,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
       <!-- Column -->
+      </div>
   </div>
 </div>
 <?php
