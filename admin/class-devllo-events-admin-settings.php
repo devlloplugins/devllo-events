@@ -117,7 +117,7 @@ class Devllo_Events_Admin_Settings{
 			
 				?>
 			<td>Events</td>
-			</tr>
+			<td>
 			<?php   
 			wp_dropdown_pages( array( 
 				'name' => 'devllo-events-page', 
@@ -126,18 +126,9 @@ class Devllo_Events_Admin_Settings{
 				'selected' => get_option('devllo-events-page'),
 				));
 			?>
-			<tr>
-			<?php/*
-			if (devllo_post_exists_by_slug( 'calendar' )) {
-				?>
-			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_url($siteurl); ?>/calendar"></td> <td><a href="<?php echo get_site_url(); ?>/calendar" class="button">View Page</a></td>
-			<?php } 
-			else { 
-				$calendarpage = get_option('devllo-calendar-page');
-				?>
-			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_html($calendarpage); ?>"></td><td></td>
+			</td>
 			</tr>
-			<?php  } */ ?>
+		
             </table>
 			<p>Events Page Template</p>
 			Choose a template for the Events Page
