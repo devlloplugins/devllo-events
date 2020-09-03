@@ -136,7 +136,6 @@ class Devllo_Events_Admin_Settings{
 			<h3>Events Page Template</h3>
 			<form method="post" action="options.php">
   <?php
-  settings_fields('myplug_options_group');
   $myplug_options = get_option('myplug_settings');
   ?>
   <input type="checkbox" name="myplug_settings[checkbox1]" value="1" <?php checked('1', $myplug_options['checkbox1']); ?> /><br />
