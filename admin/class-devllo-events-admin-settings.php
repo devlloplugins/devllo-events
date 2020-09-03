@@ -30,9 +30,7 @@ class Devllo_Events_Admin_Settings{
     }
 
     public function __construct() {
-	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
-	  
-      
+	  add_action( 'admin_init', array( $this, 'init_settings'  ) );     
 
 	}
 	
@@ -153,8 +151,8 @@ class Devllo_Events_Admin_Settings{
   print "checked";
  } ?>
   <input type="text" class="regular-text" name="myplug_settings[text2]" value="<?php echo $myplug_options['text2']; ?>" /><br />
-  <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); ?> /><br />
-  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?> /><br />     
+ <?php// <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); ?> /><br />
+ <?php//  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?> /><br />     
 			
             </table>
           <?php
