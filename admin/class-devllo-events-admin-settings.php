@@ -142,17 +142,17 @@ class Devllo_Events_Admin_Settings{
   $myplug_options = get_option('myplug_settings');
   ?>
   <input type="checkbox" name="myplug_settings[checkbox1]" value="1" <?php checked('1', $myplug_options['checkbox1']); ?> /><br />
-  <?php if ($myplug_options['checkbox1'] == "1") {
+  <?php if ($_POST['myplug_settings[checkbox1]'] == "1") {
   print "checked";
  } ?>
   <input type="text" class="regular-text" name="myplug_settings[text1]" value="<?php echo $myplug_options['text1']; ?>" /><br />
   <input type="checkbox" name="myplug_settings[checkbox2]" value="1" <?php checked('1', $myplug_options['checkbox2']); ?> /><br />
-  <?php if ($myplug_options['checkbox2'] == "1") {
+  <?php if ($_POST['myplug_settings[checkbox2]'] == "1") {
   print "checked";
  } ?>
   <input type="text" class="regular-text" name="myplug_settings[text2]" value="<?php echo $myplug_options['text2']; ?>" /><br />
- <?php// <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); ?> /><br />
- <?php//  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?> /><br />     
+ <?php// <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); 
+ //  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?>     
 			
             </table>
           <?php
