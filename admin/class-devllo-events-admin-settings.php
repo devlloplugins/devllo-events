@@ -127,14 +127,13 @@ class Devllo_Events_Admin_Settings{
 			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_url($siteurl); ?>/calendar"></td> <td><a href="<?php echo get_site_url(); ?>/calendar" class="button">View Page</a></td>
 			<?php } 
 			else { 
-				$calendarpage = get_option('devllo-events-page');
+				$calendarpage = get_option('devllo-calendar-page');
 				?>
 			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_html($calendarpage); ?>"></td><td></td>
 			</tr>
 			<?php  } ?>
 
 			<h3>Events Page Template</h3>
-			<form method="post" action="options.php">
   <?php
   $myplug_options = get_option('myplug_settings');
   ?>
@@ -144,8 +143,6 @@ class Devllo_Events_Admin_Settings{
   <input type="text" class="regular-text" name="myplug_settings[text2]" value="<?php echo $myplug_options['text2']; ?>" /><br />
   <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); ?> /><br />
   <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?> /><br />     
-  <?php submit_button(); ?>
-  </form>
 			
             </table>
           <?php
