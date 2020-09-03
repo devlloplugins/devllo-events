@@ -30,7 +30,9 @@ class Devllo_Events_Admin_Settings{
     }
 
     public function __construct() {
-	  add_action( 'admin_init', array( $this, 'init_settings'  ) );     
+	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
+	  
+      
 
 	}
 	
@@ -41,6 +43,7 @@ class Devllo_Events_Admin_Settings{
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
 	  register_setting( 'devllo-events-pages', 'myplug_settings' );
+	  
 
 	  
     }
@@ -138,22 +141,8 @@ class Devllo_Events_Admin_Settings{
 			<?php  } ?>
 
 			<h3>Events Page Template</h3>
-  <?php
-  $myplug_options = get_option('myplug_settings');
-  ?>
-  <input type="checkbox" name="myplug_settings[checkbox1]" value="1" <?php checked('1', $myplug_options['checkbox1']); ?> /><br />
-  <?php if ($_POST['myplug_settings[checkbox1]'] == "1") {
-  print "checked";
- } ?>
-  <input type="text" class="regular-text" name="myplug_settings[text1]" value="<?php echo $myplug_options['text1']; ?>" /><br />
-  <input type="checkbox" name="myplug_settings[checkbox2]" value="1" <?php checked('1', $myplug_options['checkbox2']); ?> /><br />
-  <?php if ($_POST['myplug_settings[checkbox2]'] == "1") {
-  print "checked";
- } ?>
-  <input type="text" class="regular-text" name="myplug_settings[text2]" value="<?php echo $myplug_options['text2']; ?>" /><br />
- <?php// <input type="radio" name="myplug_settings[radio1]" value="item1" <?php checked('item1', $myplug_options['radio1']); 
- //  <input type="radio" name="myplug_settings[radio1]" value="item2" <?php checked('item2', $myplug_options['radio1']); ?>     
-			
+		<input type="radio" name="demo-radio" value="1" <?php checked(1, get_option('demo-radio'), true); ?>>1
+        <input type="radio" name="demo-radio" value="2" <?php checked(2, get_option('demo-radio'), true); ?>>2	
             </table>
           <?php
         }
