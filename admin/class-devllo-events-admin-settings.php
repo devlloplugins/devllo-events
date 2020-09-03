@@ -42,7 +42,7 @@ class Devllo_Events_Admin_Settings{
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
-	  register_setting( 'devllo-events-pages', 'demo-radio' );
+	  register_setting( 'devllo-events-pages', 'devllo-events-template-radio' );
 	  
 
 	  
@@ -139,11 +139,11 @@ class Devllo_Events_Admin_Settings{
 			<td><?php _e('Calendar Page:', 'devllo-events'); ?></td> <td><input name="devllo-calendar-page" type="text" class="regular-text" value="<?php echo esc_html($calendarpage); ?>"></td><td></td>
 			</tr>
 			<?php  } ?>
-
-			<h3>Events Page Template</h3>
-		<input type="radio" name="demo-radio" value="1" <?php checked(1, get_option('demo-radio'), true); ?>>1
-        <input type="radio" name="demo-radio" value="2" <?php checked(2, get_option('demo-radio'), true); ?>>2	
             </table>
+			<p>Events Page Template</p>
+			Choose a template for the Events Page
+		<input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template
+        <input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template
           <?php
         }
      			submit_button();
