@@ -119,12 +119,20 @@ class Devllo_Events_Admin_Settings{
 				?>
 			<td><?php _e('Events Page:', 'devllo-events'); ?></td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo esc_url($siteurl); ?>/events"></td> <td><a href="<?php echo get_site_url(); ?>/events" class="button">View Page</a></td>
 			<?php } 
+			
 			else { 
 				$eventspage = get_option('devllo-events-page');
 				?>
 			<td><?php _e('Events Page:', 'devllo-events'); ?></td> <td><input name="devllo-events-page" type="text" class="regular-text" value="<?php echo esc_html($eventspage); ?>"></td><td></td>
 			</tr>
-			<?php  } ?>
+			<?php  } 
+			wp_dropdown_pages( array( 
+				'name' => 'devllo-events-page', 
+				'show_option_none' => __( '— Select —' ), 
+				'option_none_value' => '0', 
+				'selected' => get_option('devllo-events-page'),
+				));
+			?>
 			<tr>
 			<?php
 			if (devllo_post_exists_by_slug( 'calendar' )) {
