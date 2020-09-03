@@ -42,7 +42,7 @@ class Devllo_Events_Admin_Settings{
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
-	  register_setting( 'devllo-events-pages', 'myplug_settings' );
+	  register_setting( 'devllo-events-pages', 'demo-radio' );
 	  
 
 	  
