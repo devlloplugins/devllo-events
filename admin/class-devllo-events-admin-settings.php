@@ -41,7 +41,8 @@ class Devllo_Events_Admin_Settings{
 
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
-	  register_setting(	'devllo-events-options', 'devllo-events-organiser-checkbox');	  
+	  register_setting(	'devllo-events-options', 'devllo-events-organiser-checkbox');
+	  register_setting(	'devllo-events-options', 'devllo-events-comments-checkbox');	  	  
 	  register_setting( 'devllo-events-pages', 'devllo-events-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-calendar-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-template-radio' );
@@ -107,6 +108,15 @@ class Devllo_Events_Admin_Settings{
 			<tr>
 		  	<td>
 		  	<input type="checkbox" name="devllo-events-organiser-checkbox" value="1" <?php checked(1, get_option('devllo-events-organiser-checkbox'), true); ?> /> 
+			</td>
+			</tr>
+			<tr>
+			<th style="text-align: left;"><?php _e('Comments', 'devllo-events'); ?></th></tr>
+			<tr>
+			<td><?php _e('Enable Comments on Event Pages?', 'devllo-events'); ?></td></tr>
+			<tr>
+		  	<td>
+		  	<input type="checkbox" name="devllo-events-comments-checkbox" value="1" <?php checked(1, get_option('devllo-events-comments-checkbox'), true); ?> /> 
 			</td>
 			</tr>
             </table>

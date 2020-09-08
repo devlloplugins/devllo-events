@@ -107,6 +107,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
             <div><?php do_action('devllo_events_after_main_single_event'); ?></div>
 
+            <?php if (get_option( 'devllo-events-comments-checkbox' ) == 1){ ?>
 
             <div class="event-comments">
               <div class="card my-4">
@@ -114,6 +115,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
               <?php comments_template(); ?>
               </div>
             </div>
+            <?php } ?>
 
             </div> <!-- /col-md-8 blog-main -->
 
