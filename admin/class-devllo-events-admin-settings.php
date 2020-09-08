@@ -139,7 +139,7 @@ class Devllo_Events_Admin_Settings{
 				));
 			?>
 			</td>
-			<td><?php echo get_option('devllo-events-page');?></td>
+			<td><a target="_blank" href="<?php echo esc_url( get_option('devllo-events-page') ); ?>" class="button button-secondary">view page</a></td>
 			</tr>
 
 			<tr>
@@ -155,7 +155,7 @@ class Devllo_Events_Admin_Settings{
 				));
 			?>
 			</td>
-			<td><?php echo get_option('devllo-calendar-page'); ?></td>
+			<td><a target="_blank" href="<?php echo esc_url( get_option('devllo-calendar-page') ); ?>" class="button button-secondary">view page</a></td>
 			</tr>
 		
 			<tr>
