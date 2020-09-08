@@ -88,6 +88,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
             <img class="img-fluid rounded" src="<?php echo esc_url($featured_img_url); ?>" alt="">
             </div>
 
+            <div><?php do_action('devllo_events_before_main_single_event'); ?></div>
             <div class="event-details">
               <h3><?php _e('Event Details', 'devllo-events') ?></h3>
               <p class="lead"><?php the_content(); ?></p>
@@ -117,6 +118,8 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
             </div> <!-- /col-md-8 blog-main -->
 
       <div class="col-md-4">
+              <div><?php do_action('devllo_events_before_side_single_event'); ?></div>
+
               <div class="event-location">
                 <?php if(!empty($url)){ ?>
                 <h3><?php _e('Event Website', 'devllo-events') ?></h3>

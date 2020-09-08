@@ -79,7 +79,7 @@ class Devllo_Events_Admin_Settings{
           do_settings_sections( 'devllo-events-options' );
            ?>
 
-			<h2><?php _e('Options', 'devllo-events'); ?></h2>
+			<h2><?php _e('General Settings', 'devllo-events'); ?></h2>
 			<?php
             if (!get_option('devllo-map-api-key')){ ?>
                 <div class="error notice">
@@ -128,7 +128,7 @@ class Devllo_Events_Admin_Settings{
 			} ?>
 			<tr>
 			<th style="text-align: left;">Events</th>
-			<td></td>
+			<td><em>This page should include the shortcode [devllo-events]</em></td>
 			<td>
 			<?php   
 			wp_dropdown_pages( array( 
@@ -139,11 +139,12 @@ class Devllo_Events_Admin_Settings{
 				));
 			?>
 			</td>
+			<td><?php echo get_option('devllo-events-page');?></td>
 			</tr>
 
 			<tr>
 			<th style="text-align: left;">Calendar</th>
-			<td></td>
+			<td><em>This page should include the shortcode [devllo-calendar]</em></td>
 			<td>
 			<?php   
 			wp_dropdown_pages( array( 
@@ -154,11 +155,13 @@ class Devllo_Events_Admin_Settings{
 				));
 			?>
 			</td>
+			<td><?php echo get_option('devllo-calendar-page'); ?></td>
 			</tr>
 		
 			<tr>
 			<th style="text-align: left;">
 			<h3>Events Page Template</h3></th>
+			<td></td>
 			<td></td>
 			<td></td>
 			</tr>
@@ -167,10 +170,12 @@ class Devllo_Events_Admin_Settings{
 			<th style="text-align: left;">Choose a template for the Events Page</th>
 			<td></td>
 			<td></td>
+			<td></td>
 			</tr>
 			<tr>
 			<td><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template</td>
         	<td><input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template</td>
+			<td></td>
 			<td></td>
 			</tr>
 			</table>
