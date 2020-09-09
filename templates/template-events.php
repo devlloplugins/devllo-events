@@ -69,10 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
 </script>
+<?php // Add Before Calendar Styled Events Page Hook
+do_action("devllo_before_calendar_styled_events_page_hook"); ?>
 <div id='calendar'></div>
+<p></p>
 
 <?php
+// Add After Calendar Styled Events Page Hook
+do_action("devllo_after_calendar_styled_events_page_hook"); 
+
  } elseif (get_option('devllo-events-template-radio') == 2 ){
+
+  // Add Before Blog Styled Events Page Hook
+  do_action("devllo_before_blog_styled_events_page_hook"); 
 
 // Load Blog styled Events Template
 ?>
@@ -112,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 <?php
-
+ // Add After Blog Styled Events Page Hook
+ do_action("devllo_after_blog_styled_events_page_hook"); 
  }
 
 $content = ob_get_contents();

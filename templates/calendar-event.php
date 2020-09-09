@@ -68,6 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
 </script> 
+<?php 
+
+// Add Before Calendar Hook
+do_action("devllo_before_calendar_hook");
+?>
+
 <div id='calendar'></div>
 <p></p>
 <?php 
