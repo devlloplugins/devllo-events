@@ -91,7 +91,7 @@ do_action("devllo_after_calendar_styled_events_page_hook");
     <div class="row justify-content-center">
       <!-- Column -->
       <div class="col-md-8 text-center">
-        <h3 class="my-3">Events</h3>
+        <h3 class="my-3"><?php _e('Events', 'devllo-events'); ?></h3>
         <h6 class="subtitle font-weight-normal"><?php do_action('devllo_events_blog_template_subtitle'); ?></h6>
       </div>
       <!-- Column -->

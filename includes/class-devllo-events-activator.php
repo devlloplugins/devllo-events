@@ -43,7 +43,7 @@ class Devllo_Events_Activator {
 	public static function devllo_events_activate() { 
 		add_option( 'Activated_Plugin', 'devllo-event' );
 		
-		$devllo_events_current_version = 0.4;
+		$devllo_events_current_version = 1.0;
 
 		update_option( 'devllo_events_current_version' , $devllo_events_current_version, true);
     }

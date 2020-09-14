@@ -50,10 +50,13 @@ class Devllo_Events_Admin_Settings{
 
     
     public static function devllo_events_settings_page(){
-      $adminpagetitle = get_admin_page_title();
+	  $adminpagetitle = get_admin_page_title();
+	  
 	  ?>
-        <h1><?php echo esc_attr($adminpagetitle); ?></h1>
-
+		<div style="width: 100%;">
+			<img style="width: 150px;" src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
+			<h1 style=""><?php echo esc_attr($adminpagetitle); ?></h1>
+		</div>
         <?php
 		$active_tab = "devllo_events_options";
 		$tab = filter_input(
@@ -137,8 +140,8 @@ class Devllo_Events_Admin_Settings{
 				return ( $loop_posts->have_posts() ? $loop_posts->posts[0] : false );
 			} ?>
 			<tr>
-			<th style="text-align: left;">Events</th>
-			<td><em>This page should include the shortcode [devllo-events]</em></td>
+			<th style="text-align: left;"><?php _e('Events', 'devllo-events'); ?></th>
+			<td><em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-events]</em></td>
 			<td>
 			<?php   
 			wp_dropdown_pages( array( 
@@ -153,8 +156,8 @@ class Devllo_Events_Admin_Settings{
 			</tr>
 
 			<tr>
-			<th style="text-align: left;">Calendar</th>
-			<td><em>This page should include the shortcode [devllo-calendar]</em></td>
+			<th style="text-align: left;"><?php _e('Calendar', 'devllo-events'); ?></th>
+			<td><em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-calendar]</em></td>
 			<td>
 			<?php   
 			wp_dropdown_pages( array( 
@@ -170,21 +173,21 @@ class Devllo_Events_Admin_Settings{
 		
 			<tr>
 			<th style="text-align: left;">
-			<h3>Events Page Template</h3></th>
+			<h3><?php _e('Events Page Template', 'devllo-events'); ?></h3></th>
 			<td></td>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
 
-			<th style="text-align: left;">Choose a template for the Events Page</th>
+			<th style="text-align: left;"><?php _e('Choose a template for the Events Page', 'devllo-events'); ?></th>
 			<td></td>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
-			<td><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>>Calendar Template</td>
-        	<td><input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>>Blog Template</td>
+			<td><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>><?php _e('Calendar Type Template', 'devllo-events'); ?></td>
+        	<td><input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>><?php _e('Blog Grid Template', 'devllo-events'); ?></td>
 			<td></td>
 			<td></td>
 			</tr>
