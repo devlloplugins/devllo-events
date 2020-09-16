@@ -31,9 +31,6 @@ class Devllo_Events_Admin_Settings{
 
     public function __construct() {
 	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
-	  
-      
-
 	}
 	
 
