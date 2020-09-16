@@ -245,7 +245,7 @@ class Devllo_Events_Posts_Admin {
         $devllo_event_location_name = sanitize_text_field( $_POST['devllo_event_location_name_field'] );
         }
 
-        if (isset($_POST['devllo_event_location_name_field'])){
+        if (isset($_POST['devllo_event_event_link_field'])){
         $devllo_event_event_link = sanitize_text_field( $_POST['devllo_event_event_link_field'] );
         }
 
