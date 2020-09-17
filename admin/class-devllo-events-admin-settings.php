@@ -52,7 +52,7 @@ class Devllo_Events_Admin_Settings{
 	  ?>
 		<div style="width: 100%;">
 			<img style="width: 150px;" src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
-			<h1 style=""><?php echo esc_attr($adminpagetitle); ?></h1>
+			<h3><?php echo esc_attr($adminpagetitle); ?></h3>
 		</div>
         <?php
 		$active_tab = "devllo_events_options";
