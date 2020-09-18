@@ -75,8 +75,10 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
  $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 ?>
         <?php 
-        echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>
-        <div class="event-organiser">Event Organiser<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
+        echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>';
+        if (get_option( 'devllo-events-organiser-checkbox' ) == 1){
+        echo '<div class="event-organiser">' . __('Event Organiser', 'devllo-events') . '<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
+        }
         get_template_part( 'content', 'page' ); ?>
 
         <div class="row">
@@ -86,6 +88,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
             <img class="img-fluid rounded" src="<?php echo esc_url($featured_img_url); ?>" alt="">
             </div>
 
+            <div><?php do_action('devllo_events_before_main_single_event'); ?></div>
             <div class="event-details">
               <h3><?php _e('Event Details', 'devllo-events') ?></h3>
               <p class="lead"><?php the_content(); ?></p>
@@ -102,8 +105,9 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
               </div>
             </div>
 
-            <div><?php do_action('after_main_single_event'); ?></div>
+            <div><?php do_action('devllo_events_after_main_single_event'); ?></div>
 
+            <?php if (get_option( 'devllo-events-comments-checkbox' ) == 1){ ?>
 
             <div class="event-comments">
               <div class="card my-4">
@@ -111,33 +115,78 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
               <?php comments_template(); ?>
               </div>
             </div>
+            <?php } ?>
 
             </div> <!-- /col-md-8 blog-main -->
 
       <div class="col-md-4">
+              <div><?php do_action('devllo_events_before_side_single_event'); ?></div>
+
               <div class="event-location">
-                <?php if(!empty($url)){ ?>
+
+                <?php
+                //Event Website Content
+                if(!empty($url)){ ?>
                 <h3><?php _e('Event Website', 'devllo-events') ?></h3>
-                <p><a href="<?php echo esc_url($url); ?>"><?php echo esc_attr($url); ?></a></p>
-                <?php } ?>
+                <?php
 
-                <?php if(!empty($event_link)){ ?>
+                $event_website_content = '<p><a href="' . esc_url($url) . '">' . esc_attr($url) . '</a></p>';
+                  if (apply_filters('event_website_content_filter', true )){
+                  echo apply_filters('the_content', $event_website_content);
+                  }
+                  else {
+                    echo $event_website_content;
+                  }
+                } ?>
+
+                <?php
+                // Event Online Link Content
+                if(!empty($event_link)){ ?>
                 <h3><?php _e('Event Online Link', 'devllo-events') ?></h3>
-                <p><a href="<?php echo esc_url($event_link) ?>"><?php echo esc_attr($event_link); ?></a></p>
-                <?php } ?>
 
-                <?php if(!empty($location_name)){ ?>
+                <?php $event_online_link_content = 
+                '<p><a href="' . esc_url($event_link) . '">' . esc_attr($event_link) . '</a></p>';
+                if (apply_filters('event_online_link_content_filter', true )){
+                  echo apply_filters('the_content', $event_online_link_content);
+                  }
+                  else {
+                    echo $event_online_link_content;
+                  }
+                 } ?>
+
+
+                <?php
+                // Event Location Name Content
+                if(!empty($location_name)){ ?>
                 <h3><?php _e('Event Location', 'devllo-events') ?></h3>
-                <p><?php echo esc_attr($location_name); ?></p>
-                <?php } ?>
 
-                <?php if(!empty($map_location)){ ?>
-                <p><?php echo esc_attr($map_location); ?></p>
-                <div id="map"></div>
-                <?php } ?>
+                <?php $event_location_name_content =
+                '<p>' . esc_attr($location_name) . '</p>';
+                if (apply_filters('event_location_name_content_filter', true )){
+                echo apply_filters('the_content', $event_location_name_content); 
+                }
+                else {
+                echo $event_location_name_content;
+                }
+                } ?>
+
+
+                <?php
+                // Event Map Location Content
+                if(!empty($map_location)){ ?>
+                <?php $event_map_location_content =
+                '<p>' . esc_attr($map_location) . '</p>
+                <div id="map"></div>';
+                if (apply_filters('event_map_location_content_filter', true )){
+                echo apply_filters('the_content', $event_map_location_content); 
+                }
+                else {
+                echo $event_map_location_content;
+                }
+                } ?>
               </div>
 
-              <div><?php do_action('after_side_single_event'); ?></div>
+              <div><?php do_action('devllo_events_after_side_single_event'); ?></div>
       </div>
 
 
@@ -154,3 +203,5 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
 
 <?php get_footer( );
+
+

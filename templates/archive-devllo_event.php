@@ -60,8 +60,17 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
 </script>
+<?php 
+
+// Add Before Archive Page Hook
+do_action("devllo_before_archive_page_hook"); ?>
 
 <div id='calendar'></div>
+<p></p>
+<?php 
+
+// Add After Archive Page Hook
+do_action("devllo_after_archive_page_hook"); ?>
 
 
     </div><!-- #primary -->

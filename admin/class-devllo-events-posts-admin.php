@@ -15,12 +15,7 @@ class Devllo_Events_Posts_Admin {
     
     public function __construct() {
         add_action( 'save_post', array( $this, 'save_metabox' ), 1, 2 );
-        add_action ('add_meta_boxes', array (&$this, 'add_metabox' ));
-        add_action( 'save_post', array( $this, 'devllo_eventposts_save_meta' ), 1, 2 );
-
-     
-    
-    
+        add_action ('add_meta_boxes', array ($this, 'add_metabox' ));
     }
 
     // Add Meta Boxes
@@ -38,7 +33,6 @@ class Devllo_Events_Posts_Admin {
     public function render_metabox( $post, $args ) {
 
         global $post, $wp_locale;
-
 
 		// Add an nonce field so we can check for it later.
 		wp_nonce_field( 'devllo_event_inner_custom_box', 'devllo_event_inner_custom_box_nonce' );
@@ -64,7 +58,7 @@ class Devllo_Events_Posts_Admin {
            <h3> <?php _e( 'Event Location', 'devllo-events' ); ?></h3>
         </label>        
 
-    <div class="container">
+        <div class="container">
 	    <div class="panel panel-primary">
             <h4 class="panel-title"><?php _e( 'Event Online Link:', 'devllo-events' ); ?></h4> 
             <input type="url" id="devllo_event_event_link_field" name="devllo_event_event_link_field" value="<?php echo esc_attr( $event_link ); ?>" size="25" />
@@ -131,9 +125,9 @@ class Devllo_Events_Posts_Admin {
 					 </div>
 				</div>
 		   </div>
-		</div> <!-- /panel-body -->
-	</div> <!-- /panel-primary-->
-</div>  <!-- /container-->
+                </div> <!-- /panel-body -->
+            </div> <!-- /panel-primary-->
+        </div>  <!-- /container-->
 
        <?php
 
@@ -383,16 +377,6 @@ class Devllo_Events_Posts_Admin {
             array( 'id' => '_end')
         );
  }
-
-    public function devllo_event_date($post, $args){
-        
-    }
-
-
-    // Save Metabox Data
-    function devllo_eventposts_save_meta( $post_id, $post ) {
-        
-    }
 
 }
 new Devllo_Events_Posts_Admin();
