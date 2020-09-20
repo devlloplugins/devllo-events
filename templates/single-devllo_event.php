@@ -13,6 +13,9 @@ wp_enqueue_script( 'map_auto_complete_script');
 wp_register_script( 'map_api_script', 'https://maps.googleapis.com/maps/api/js?key='. get_option('devllo-map-api-key') .'&callback=initMap&libraries=&v=weekly' );
 wp_enqueue_script( 'map_api_script');
 
+if( get_post_type() == 'devllo_event' ) {
+  wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');	
+ }
 
 get_header( ); 
 
@@ -203,5 +206,3 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
 
 <?php get_footer( );
-
-
