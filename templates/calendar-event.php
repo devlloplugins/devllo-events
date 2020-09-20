@@ -4,7 +4,7 @@ class Devllo_Events_Calendar_Display {
 
     public function __construct(){  
         add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
-		    add_shortcode('devllo-calendar', array($this, 'display_calendar'));
+        add_shortcode('devllo-calendar', array($this, 'display_calendar'));
 
     }
 
@@ -14,16 +14,19 @@ class Devllo_Events_Calendar_Display {
       wp_enqueue_script( 'fullcalendar_js');
 
       wp_register_script( 'fullcalendar_min_js', DEVLLO_EVENTS_INC_URI. 'assets/js/main.min.js' );
-      wp_enqueue_script( 'fullcalendar_min_js');  
+      wp_enqueue_script( 'fullcalendar_min_js'); 
+      
+      global $post;
+      if ( has_shortcode( $post->post_content, 'devllo-calendar' ) ) {
+        wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');
 
-      wp_enqueue_style( 'calendar_css', DEVLLO_EVENTS_INC_URI. 'assets/css/main.css');	
+        wp_enqueue_style( 'calendar_css', DEVLLO_EVENTS_INC_URI. 'assets/css/main.css');	
 
-      wp_enqueue_style( 'font_css', DEVLLO_EVENTS_INC_URI. 'assets/css/all.css');	
+        wp_enqueue_style( 'font_css', DEVLLO_EVENTS_INC_URI. 'assets/css/all.css');	
+       }
 
-      wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');	
     }
-	
-
+    
     function display_calendar($content=null){
 			if (!is_admin()){
     global $post;
