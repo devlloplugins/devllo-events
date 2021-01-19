@@ -161,6 +161,7 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.1' );
             $this->_include( 'admin/class-devllo-events-admin-menu.php');
             $this->_include( 'admin/class-devllo-events-posts-admin.php');
             $this->_include( 'admin/class-devllo-events-admin-settings.php');
+            $this->_include( 'admin/class-devllo-events-addons-page.php');
             $this->_include( 'templates/calendar-event.php');
             $this->_include( 'templates/template-events.php');
 
