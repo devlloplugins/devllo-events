@@ -82,7 +82,7 @@ class Devllo_Events_Addons_Page{
 			<h2><?php _e('Free Add-Ons', 'devllo-events'); ?></h2>
 		
 				<div class="addons-container">
-					<div><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="width: 60%; margin: 0 auto; display: block;" src="<?php echo DEVLLO_EVENTS_URI . 'admin/assets/img/PMPro Devllo Events.png'; ?>" data-holder-rendered="true">
+					<div><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="width: 60%; margin: 0 auto; display: block;" src="<?php echo DEVLLO_EVENTS_URI . 'admin/assets/img/PMPro-Devllo-Events.png'; ?>" data-holder-rendered="true">
 						<div class="card-body">
                   		<p>This adds an integration with PMPro to restrict events to PMPro members.</p>
                   		<div class="d-flex justify-content-between align-items-center">
@@ -105,7 +105,7 @@ class Devllo_Events_Addons_Page{
            ?>
 			<h2><?php _e('Premium Add-Ons', 'devllo-events'); ?></h2>
 			<div class="addons-container">
-					<div><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="width: 60%; margin: 0 auto; display: block;" src="<?php echo DEVLLO_EVENTS_URI . 'admin/assets/img/WC Devllo Events.png'; ?>" data-holder-rendered="true">
+					<div><img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="width: 60%; margin: 0 auto; display: block;" src="<?php echo DEVLLO_EVENTS_URI . 'admin/assets/img/WC-Devllo-Events.png'; ?>" data-holder-rendered="true">
 						<div class="card-body">
                   		<p>Purchase Events Tickets with WooCommerce.</p>
                   		<div class="d-flex justify-content-between align-items-center">
@@ -142,10 +142,10 @@ Devllo_Events_Addons_Page::instance();
     background-color: #fff;
 }
 
-@media (min-width: 576px)
+@media (min-width: 576px){
 .jumbotron {
     padding: 4rem 2rem;
-}
+}}
 
 .jumbotron {
     padding: 2rem 1rem;
@@ -159,18 +159,18 @@ Devllo_Events_Addons_Page::instance();
 }
 
 @media (min-width: 1200px){
-.container {
+    .jumbotron .container {
     max-width: 1140px;
 }
 }
 
 @media (min-width: 992px){
-.container {
+    .jumbotron .container {
     max-width: 960px;
 }
 }
 
-.container {
+.jumbotron .container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -212,7 +212,7 @@ Devllo_Events_Addons_Page::instance();
     background-color: #82b359;
     border-color: #82b359;
 }
-.btn {
+.jumbotron .btn {
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -230,7 +230,7 @@ Devllo_Events_Addons_Page::instance();
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.btn-secondary {
+.jumbotron .btn-secondary {
     color: #fff;
     background-color: #82b359;
     border-color: #82b359;
