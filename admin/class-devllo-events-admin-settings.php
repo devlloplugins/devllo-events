@@ -51,8 +51,6 @@ class Devllo_Events_Admin_Settings{
 	  
 	  ?>
 		<div style="width: 100%;">
-			<img style="width: 150px;" src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
-			<h3><?php echo esc_attr($adminpagetitle); ?></h3>
 		</div>
         <?php
 		$active_tab = "devllo_events_options";
@@ -64,7 +62,18 @@ class Devllo_Events_Admin_Settings{
 		);
         if( isset( $tab ) ) {
             $active_tab = $tab;
-          } ?>
+		  } ?>
+		  
+		  <section class="jumbotron text-center">
+        <div class="container">
+		  <img style="width: 150px;" src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
+          <p style="margin-top: 0;">
+		  <a href="?page=devllo-events-addons&tab=devllo_events_free_addons&post_type=devllo_event" class='btn btn-primary my-2'>Add Ons</a>
+			  </p>
+        </div>
+	</section>
+	<h3><?php echo esc_attr($adminpagetitle); ?></h3>
+
 
         <h2 class="nav-tab-wrapper">
 				<a href="?page=devllo-events-settings&tab=devllo_events_options&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_options' ? 'nav-tab-active' : ''; ?>"><?php _e('General', 'devllo-events'); ?></a>
