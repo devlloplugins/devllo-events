@@ -4,7 +4,7 @@ Tags: calendar, events, event, event manager, event management, fullcalendar
 Requires at least: 4.4
 Tested up to: 5.6
 Requires PHP: 5.5
-Stable tag: 1.0.2.1
+Stable tag: 1.0.2.2
 License: GPLv2 or later
 
 This is a simple event management plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
@@ -45,6 +45,9 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 
 
 == Changelog ==
+= 1.0.2.2 - 22/01/2021 =
+BUG FIX: Fixed Gutenberg Publish/Update Error
+
 = 1.0.2.1 - 21/01/2021 =
 BUG FIX: Fix Add On Menu
 
