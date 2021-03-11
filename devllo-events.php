@@ -4,7 +4,7 @@
  *   Plugin URI: https://devlloplugins.com/
  *   Description: This is a simple Event Management plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
  *   Author: Devllo Plugins
- *   Version: 1.0.0
+ *   Version: 1.0.2
  *   Author URI: https://devllo.com/
  *   License:    GPL-2.0+
  *   License URI:  http://www.gnu.org/licenses/gpl-2.0.txt
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DEVLLO_EVENTS_VERSION', '1.0.0' );
+define( 'DEVLLO_EVENTS_VERSION', '1.0.1' );
 
 /**
  * Devllo_Events class
@@ -161,6 +161,7 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.0' );
             $this->_include( 'admin/class-devllo-events-admin-menu.php');
             $this->_include( 'admin/class-devllo-events-posts-admin.php');
             $this->_include( 'admin/class-devllo-events-admin-settings.php');
+            $this->_include( 'admin/class-devllo-events-addons-page.php');
             $this->_include( 'templates/calendar-event.php');
             $this->_include( 'templates/template-events.php');
 
