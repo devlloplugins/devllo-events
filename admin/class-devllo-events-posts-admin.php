@@ -29,7 +29,7 @@ class Devllo_Events_Posts_Admin {
             'high'
         );
     }
-
+    
     public function render_metabox( $post, $args ) {
 
         global $post, $wp_locale;
@@ -40,6 +40,7 @@ class Devllo_Events_Posts_Admin {
 
 		// Use get_post_meta to retrieve an existing value from the database.
 		$location = get_post_meta( $post->ID, 'devllo_event_location_key', true );
+        $event_price = get_post_meta( $post->ID, 'devllo_event_price_key', true );
         $url = get_post_meta( $post->ID, 'devllo_event_url_key', true );
         $location_name = get_post_meta( $post->ID, 'devllo_event_location_name_key', true );
         $event_link = get_post_meta( $post->ID, 'devllo_event_event_link_key', true );
@@ -53,13 +54,26 @@ class Devllo_Events_Posts_Admin {
         $location_long = get_post_meta( $post->ID, 'devllo_event_location_long_key', true );
 		
 		// Display the form, using the current value.
-        ?>
-        <label for="devllo_event_location_field">
-           <h3> <?php _e( 'Event Location', 'devllo-events' ); ?></h3>
-        </label>        
+        global $pagenow;
 
+        if ((( $pagenow == 'post-new.php' ) || ( $pagenow == 'post.php' )) && (get_post_type() == 'devllo_event')) {
+            wp_enqueue_script('jquery2' );
+            wp_enqueue_script('jquery_ui' );
+            wp_enqueue_script('jquery_timpe_picker' );
+        }
+        ?> 
+       
         <div class="container">
 	    <div class="panel panel-primary">
+
+        <h4 class="panel-title"><?php _e( 'Event Cost:', 'devllo-events' ); ?></h4> 
+        <input type="url" id="devllo_event_price_field" name="devllo_event_price_field" value="<?php echo esc_attr( $event_price ); ?>" size="25" /> <strong>USD</strong>
+
+
+        <label for="devllo_event_location_field">
+           <h3> <?php _e( 'Event Location', 'devllo-events' ); ?></h3>
+        </label> 
+
             <h4 class="panel-title"><?php _e( 'Event Online Link:', 'devllo-events' ); ?></h4> 
             <input type="url" id="devllo_event_event_link_field" name="devllo_event_event_link_field" value="<?php echo esc_attr( $event_link ); ?>" size="25" />
 
@@ -128,11 +142,12 @@ class Devllo_Events_Posts_Admin {
                 </div> <!-- /panel-body -->
             </div> <!-- /panel-primary-->
         </div>  <!-- /container-->
+        
+        <h4 class="panel-title"><?php _e( 'Date and Time', 'devllo-events' ); ?></h4>
 
-       <?php
+        <?php
 
-
-        $metabox_ids = array( 'Event Start Date'=>'_start', 'Event End Date'=>'_end' );
+        $metabox_ids = array( 'Event Start Date and Time'=>'_start', 'Event End Date and Time'=>'_end' );
 
         foreach ($metabox_ids as $key => $metabox_id ) {
 
@@ -168,7 +183,9 @@ class Devllo_Events_Posts_Admin {
             $min = '00';
         }
 
-        $month_s = '<select name="' . $metabox_id . '_month">';
+        $date = get_post_meta( $post->ID, $metabox_id . '_date', true );
+
+        $month_s = '<select style="display:none;" name="' . $metabox_id . '_month" id="' . $metabox_id . '_month">';
         for ( $i = 1; $i < 13; $i = $i +1 ) {
             $month_s .= "\t\t\t" . '<option value="' . zeroise( $i, 2 ) . '"';
             if ( $i == $month )
@@ -181,13 +198,16 @@ class Devllo_Events_Posts_Admin {
         <label for="<?php echo $metabox_id; ?>">
             <?php _e( $key, 'devllo-events' ); ?>
         </label><br/>
+
         <?php
         echo $month_s;
-        echo '<input type="text" name="' . $metabox_id . '_day" value="' . $day  . '" size="2" maxlength="2" />';
-        echo '<input type="text" name="' . $metabox_id . '_year" value="' . $year . '" size="4" maxlength="4" /> @ ';
-        echo '<input type="text" name="' . $metabox_id . '_hour" value="' . $hour . '" size="2" maxlength="2"/>:';
-        echo '<input type="text" name="' . $metabox_id . '_minute" value="' . $min . '" size="2" maxlength="2" /> <br>';
-            }
+        echo '<input type="text" name="' . $metabox_id . '_date"  value="' . $date .'" id="' . $metabox_id . '_date"  />';
+
+        echo '<input style="display:none;" type="text" name="' . $metabox_id . '_day" value="' . $day  . '" id="' . $metabox_id . '_day" value="' . $day  . '" size="2" maxlength="2" />';
+        echo '<input style="display:none;" type="text" name="' . $metabox_id . '_year" value="' . $year . '" id="' . $metabox_id . '_year" value="' . $year . '" size="4" maxlength="4" /> @ ';
+        echo '<input type="text" name="' . $metabox_id . '_hour" class="time_h ' . $metabox_id . '_hour" value="' . $hour . '" size="2" maxlength="2"/>:';
+        echo '<input type="text" name="' . $metabox_id . '_minute" class="time_m ' . $metabox_id . '_minute" value="' . $min . '" size="2" maxlength="2" /> <br>';
+      }
 }
 
 
@@ -235,11 +255,15 @@ class Devllo_Events_Posts_Admin {
         $devllo_event_url = sanitize_text_field( $_POST['devllo_event_url_field'] );
         }
         
+        if (isset($_POST['devllo_event_price_field'])){
+         $devllo_event_price = sanitize_text_field( $_POST['devllo_event_price_field'] );
+        }
+
         if (isset($_POST['devllo_event_location_name_field'])){
         $devllo_event_location_name = sanitize_text_field( $_POST['devllo_event_location_name_field'] );
         }
 
-        if (isset($_POST['devllo_event_location_name_field'])){
+        if (isset($_POST['devllo_event_event_link_field'])){
         $devllo_event_event_link = sanitize_text_field( $_POST['devllo_event_event_link_field'] );
         }
 
@@ -271,6 +295,10 @@ class Devllo_Events_Posts_Admin {
         // Update the meta field.
         if (isset($_POST['autocomplete'])){
         update_post_meta( $post_id, 'devllo_event_location_key', $devllo_event_location );
+        }
+
+        if (isset($_POST['devllo_event_price_field'])){
+            update_post_meta( $post_id, 'devllo_event_price_key', $devllo_event_price );
         }
         
         if (isset($_POST['devllo_event_location_name_field'])){
@@ -333,11 +361,12 @@ class Devllo_Events_Posts_Admin {
                  } else {
                        $events_meta[$key . '_hour'] = sanitize_text_field($_POST[$key . '_hour']);
                  }
-            $events_meta[$key . '_year'] = sanitize_text_field($_POST[$key . '_year']);
-            $events_meta[$key . '_hour'] = sanitize_text_field($_POST[$key . '_hour']);
-            $events_meta[$key . '_minute'] = sanitize_text_field($_POST[$key . '_minute']);
-            $events_meta[$key . '_eventtimestamp'] = $events_meta[$key . '_year'] . $events_meta[$key . '_month'] . $events_meta[$key . '_day'] . $events_meta[$key . '_hour'] . $events_meta[$key . '_minute'];
-        }
+                $events_meta[$key . '_date'] = sanitize_text_field($_POST[$key . '_date']);
+                $events_meta[$key . '_year'] = sanitize_text_field($_POST[$key . '_year']);
+                $events_meta[$key . '_hour'] = sanitize_text_field($_POST[$key . '_hour']);
+                $events_meta[$key . '_minute'] = sanitize_text_field($_POST[$key . '_minute']);
+                $events_meta[$key . '_eventtimestamp'] = $events_meta[$key . '_year'] . $events_meta[$key . '_month'] . $events_meta[$key . '_day'] . $events_meta[$key . '_hour'] . $events_meta[$key . '_minute'];
+            }
 
         foreach ( $events_meta as $key => $value ) { // Cycle through the $events_meta array!
             if ( $post->post_type == 'revision' ) return; // Don't store custom data twice

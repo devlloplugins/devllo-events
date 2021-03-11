@@ -30,6 +30,9 @@ $map_location = get_post_meta( $post->ID, 'devllo_event_location_key', true );
 $event_link = get_post_meta( $post->ID, 'devllo_event_event_link_key', true );
 $url = get_post_meta( $post->ID, 'devllo_event_url_key', true );
 
+// Event Price
+$event_price = get_post_meta( $post->ID, 'devllo_event_price_key', true );
+
 // Event Location Name
 $location_name = get_post_meta( $post->ID, 'devllo_event_location_name_key', true );
 //Location Latitude
@@ -98,12 +101,18 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
               <div class="event-date-time">
                 <h3><?php _e('Event Date', 'devllo-events') ?></h3>
-                <p><?php _e('Event Start Date:', 'devllo-events') ?>
-                  <?php echo $startweekday . ', ' . $wp_locale->get_month($startmonth) . ' ' . get_post_meta( $post->ID, '_start_day', true ). ', ' . get_post_meta($post->ID, '_start_hour', true) . ':' . get_post_meta($post->ID, '_start_minute', true);?>
+                <p><?php _e('Event Start Date:', 'devllo-events') ?><br/>
+                  <?php echo $startweekday . ', ' . get_post_meta( $post->ID, '_start_day', true ). ', ' . $wp_locale->get_month($startmonth) . ' ' . get_post_meta( $post->ID, '_start_year', true ) . '<br/>';
+                   echo get_post_meta($post->ID, '_start_hour', true) . ':' . get_post_meta($post->ID, '_start_minute', true);
+
+                  ?>
                   </p> 
 
-                  <p><?php _e('Event End Date:', 'devllo-events') ?>
-                  <?php echo $endweekday . ', ' . $wp_locale->get_month($endmonth) . ' ' . get_post_meta( $post->ID, '_end_day', true ). ', ' . get_post_meta($post->ID, '_end_hour', true) . ':' . get_post_meta($post->ID, '_end_minute', true);?>
+                  <p><?php _e('Event End Date:', 'devllo-events') ?><br/>
+                  <?php
+                  echo $endweekday . ', ' . get_post_meta( $post->ID, '_end_day', true ). ', ' . $wp_locale->get_month($endmonth) . ' ' . get_post_meta( $post->ID, '_end_year', true ) . '<br/>';
+                  echo get_post_meta($post->ID, '_end_hour', true) . ':' . get_post_meta($post->ID, '_end_minute', true);                  
+                  ?>
                   </p> 
               </div>
             </div>
@@ -155,10 +164,17 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                   else {
                     echo $event_online_link_content;
                   }
-                 } ?>
+                 } 
+                 
 
+                 // Event Price
+                 if(!empty($event_price)){ ?>
+                  <h3><?php _e('Event Cost', 'devllo-events') ?></h3>
 
-                <?php
+                  <?php
+                 echo $event_price;  _e(' USD', 'devllo-events');
+                 }
+  
                 // Event Location Name Content
                 if(!empty($location_name)){ ?>
                 <h3><?php _e('Event Location', 'devllo-events') ?></h3>
@@ -172,7 +188,6 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 echo $event_location_name_content;
                 }
                 } ?>
-
 
                 <?php
                 // Event Map Location Content
@@ -191,8 +206,6 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 
               <div><?php do_action('devllo_events_after_side_single_event'); ?></div>
       </div>
-
-
           
       <?php endwhile; // end of the loop. 
 ?>
@@ -202,7 +215,5 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
       </div><!-- #container -->
     </div><!-- #content -->
   </div><!-- #primary -->
-
-
 
 <?php get_footer( );
