@@ -65,7 +65,7 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
         public function define_constants(){
             $this->set_define( 'DEVLLO_EVENTS_PATH', plugin_dir_path( __FILE__ ) );
             $this->set_define( 'DEVLLO_EVENTS_URI', plugin_dir_url( __FILE__ ) );
-            $this->set_define( 'DEVLLO_EVENTS_VERSION', '0.4' );
+            $this->set_define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
             $this->set_define( 'DEVLLO_EVENTS_ADMIN_URI', DEVLLO_EVENTS_URI . 'admin/' );
             $this->set_define( 'DEVLLO_EVENTS_INC', DEVLLO_EVENTS_PATH . 'includes/' );
             $this->set_define( 'DEVLLO_EVENTS_INC_URI', DEVLLO_EVENTS_URI . 'includes/' );

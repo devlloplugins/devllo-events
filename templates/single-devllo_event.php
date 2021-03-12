@@ -171,8 +171,8 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                  if(!empty($event_price)){ ?>
                   <h3><?php _e('Event Cost', 'devllo-events') ?></h3>
 
+                  <h5><?php echo $event_price;  _e(' USD', 'devllo-events'); ?></h5>
                   <?php
-                 echo $event_price;  _e(' USD', 'devllo-events');
                  }
   
                 // Event Location Name Content
