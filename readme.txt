@@ -2,9 +2,9 @@
 Contributors: devlloplugins
 Tags: calendar, events, event, event manager, event management, fullcalendar
 Requires at least: 4.4
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 5.5
-Stable tag: 1.0.3
+Stable tag: 1.0.3.1
 License: GPLv2 or later
 
 This is a simple event management plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
@@ -49,7 +49,7 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 Tested and Update WordPress version
 BUG FIX: Fixed missing year on single event page
 ENHANCEMENT: Added Event Cost Text Box
-ENHANCEMENT: Added Date and Time Selector on EVent Edit Page
+ENHANCEMENT: Added Date and Time Selector on Event Edit Page
 
 
 = 1.0.2.2 - 22/01/2021 =
