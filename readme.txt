@@ -45,6 +45,11 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 
 
 == Changelog ==
+
+= 1.0.3.2 - 17/02/2021 =
+BUG FIX: Fixed error on event links on Events page 
+
+
 = 1.0.3 - 12/02/2021 =
 Tested and Update WordPress version
 BUG FIX: Fixed missing year on single event page
