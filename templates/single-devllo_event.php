@@ -4,7 +4,6 @@ Template Name: Single Event
 Template Post Type: devllo_event
 */
 
-
 defined( 'ABSPATH' ) || exit();
 
 wp_register_script( 'map_auto_complete_script', DEVLLO_EVENTS_INC_URI. 'assets/js/map-auto-complete.js' );
@@ -13,15 +12,16 @@ wp_enqueue_script( 'map_auto_complete_script');
 wp_register_script( 'map_api_script', 'https://maps.googleapis.com/maps/api/js?key='. get_option('devllo-map-api-key') .'&callback=initMap&libraries=&v=weekly' );
 wp_enqueue_script( 'map_api_script');
 
+
 if( get_post_type() == 'devllo_event' ) {
   wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');	
  }
 
-get_header( ); 
-
 global $post;
 global $wp_locale;
 
+ob_start();
+get_header(); 
 
 // Variables needed to load this template
 // Address
@@ -62,15 +62,11 @@ $endmonth = get_post_meta( $post->ID, '_end_month', true );
 $endyear =  get_post_meta( $post->ID, '_end_year', true );
 $endweekday = date("l", mktime(0, 0, 0, $endmonth, $endday, $endyear));
 
-
-
 $startdate = get_post_meta( $post->ID, '_start_year', true ). '-' .get_post_meta( $post->ID, '_start_month', true ). '-' .get_post_meta( $post->ID, '_start_day', true );
 $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $post->ID, '_end_month', true ). '-' .get_post_meta( $post->ID, '_end_day', true );
-
 ?>
 <input type="hidden" value="<?php echo $location_lat;?>" name="lat" id="lat" disabled="true">
 <input type="hidden" value="<?php echo $location_long;?>" name="long" id="long" disabled="true">
- 
 
 <div id="primary" class="site-content">
     <div id="content" role="main">
@@ -79,8 +75,7 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
 <?php while ( have_posts() ) : the_post(); 
  /* grab the url for the full size featured image */
  $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
-?>
-        <?php 
+
         echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>';
         if (get_option( 'devllo-events-organiser-checkbox' ) == 1){
         echo '<div class="event-organiser">' . __('Event Organiser', 'devllo-events') . '<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
@@ -104,10 +99,8 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 <p><?php _e('Event Start Date:', 'devllo-events') ?><br/>
                   <?php echo $startweekday . ', ' . get_post_meta( $post->ID, '_start_day', true ). ', ' . $wp_locale->get_month($startmonth) . ' ' . get_post_meta( $post->ID, '_start_year', true ) . '<br/>';
                    echo get_post_meta($post->ID, '_start_hour', true) . ':' . get_post_meta($post->ID, '_start_minute', true);
-
                   ?>
                   </p> 
-
                   <p><?php _e('Event End Date:', 'devllo-events') ?><br/>
                   <?php
                   echo $endweekday . ', ' . get_post_meta( $post->ID, '_end_day', true ). ', ' . $wp_locale->get_month($endmonth) . ' ' . get_post_meta( $post->ID, '_end_year', true ) . '<br/>';
@@ -139,10 +132,10 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 <?php
                 //Event Website Content
                 if(!empty($url)){ ?>
-                <h3><?php _e('Event Website', 'devllo-events') ?></h3>
+                <h3><?php _e('Website', 'devllo-events') ?></h3>
                 <?php
 
-                $event_website_content = '<p><a href="' . esc_url($url) . '">' . esc_attr($url) . '</a></p>';
+                $event_website_content = '<p><a href="' . esc_url($url) . '">' . __('Event Website', 'devllo-events') . '</a></p>';
                   if (apply_filters('event_website_content_filter', true )){
                   echo apply_filters('the_content', $event_website_content);
                   }
@@ -166,7 +159,6 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                   }
                  } 
                  
-
                  // Event Price
                  if(!empty($event_price)){ ?>
                   <h3><?php _e('Event Cost', 'devllo-events') ?></h3>
@@ -187,9 +179,8 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 else {
                 echo $event_location_name_content;
                 }
-                } ?>
+                } 
 
-                <?php
                 // Event Map Location Content
                 if(!empty($map_location)){ ?>
                 <?php $event_map_location_content =
@@ -209,11 +200,9 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
           
       <?php endwhile; // end of the loop. 
 ?>
-
         </div> <!-- /row -->
-
       </div><!-- #container -->
     </div><!-- #content -->
   </div><!-- #primary -->
 
-<?php get_footer( );
+<?php get_footer();

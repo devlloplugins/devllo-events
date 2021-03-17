@@ -17,7 +17,7 @@ class Devllo_Events_Calendar_Display {
       wp_enqueue_script( 'fullcalendar_min_js'); 
       
       global $post;
-      if ( has_shortcode( $post->post_content, 'devllo-calendar' ) ) {
+      if ( $post && has_shortcode( $post->post_content, 'devllo-calendar' ) ) {
         wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');
 
         wp_enqueue_style( 'calendar_css', DEVLLO_EVENTS_INC_URI. 'assets/css/main.css');	
