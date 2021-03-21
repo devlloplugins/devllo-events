@@ -17,7 +17,7 @@ class Devllo_Events_Template_Display {
       wp_enqueue_script( 'fullcalendar_min_js');  
 
       global $post;
-      if ( has_shortcode( $post->post_content, 'devllo-events' ) ) {
+      if ($post && has_shortcode( $post->post_content, 'devllo-events' ) ) {
         wp_enqueue_style( 'full_calendar_bootstrap', DEVLLO_EVENTS_INC_URI. 'assets/css/bootstrap.css');
           
         wp_enqueue_style( 'calendar_css', DEVLLO_EVENTS_INC_URI. 'assets/css/main.css');	
@@ -107,6 +107,7 @@ do_action("devllo_after_calendar_styled_events_page_hook");
          $start_month = $wp_locale->get_month(get_post_meta( $post->ID, '_start_month', true ));
          $start_month_abbr = $wp_locale->get_month_abbrev($start_month);
          $start_day = get_post_meta( $post->ID, '_start_day', true );
+         $url = get_permalink( $post->ID ); 
 
         ?>
       <div class="col-md-4 on-hover">

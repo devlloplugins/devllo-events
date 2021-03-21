@@ -2,9 +2,9 @@
 /*
  *   Plugin Name: Events by Devllo
  *   Plugin URI: https://devlloplugins.com/
- *   Description: This is a simple Event Management plugin for adding and listing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
+ *   Description: This is a simple Event Management plugin for adding and listing and managing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
  *   Author: Devllo Plugins
- *   Version: 1.0.2
+ *   Version: 1.0.3.2
  *   Author URI: https://devllo.com/
  *   License:    GPL-2.0+
  *   License URI:  http://www.gnu.org/licenses/gpl-2.0.txt
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DEVLLO_EVENTS_VERSION', '1.0.1' );
+define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
 
 /**
  * Devllo_Events class
@@ -65,7 +65,7 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.1' );
         public function define_constants(){
             $this->set_define( 'DEVLLO_EVENTS_PATH', plugin_dir_path( __FILE__ ) );
             $this->set_define( 'DEVLLO_EVENTS_URI', plugin_dir_url( __FILE__ ) );
-            $this->set_define( 'DEVLLO_EVENTS_VERSION', '0.4' );
+            $this->set_define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
             $this->set_define( 'DEVLLO_EVENTS_ADMIN_URI', DEVLLO_EVENTS_URI . 'admin/' );
             $this->set_define( 'DEVLLO_EVENTS_INC', DEVLLO_EVENTS_PATH . 'includes/' );
             $this->set_define( 'DEVLLO_EVENTS_INC_URI', DEVLLO_EVENTS_URI . 'includes/' );
@@ -94,10 +94,22 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.1' );
 
         public function admin_enqueue_scripts() {
 
-            wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/style.css');	
+            wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/style.css');	
+
+            wp_enqueue_style( 'jquery-ui-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery-ui.css');	
+
+            wp_enqueue_style( 'jquery-time-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery.timepicker.min.css');	
             global $pagenow;
 
             if ((( $pagenow == 'post-new.php' ) || ( $pagenow == 'post.php' )) && (get_post_type() == 'devllo_event')) {
+
+                wp_register_script('jquery2', DEVLLO_EVENTS_INC_URI. 'assets/js/jquery-1.12.4.js'); 
+
+                wp_register_script('jquery_ui', DEVLLO_EVENTS_INC_URI. 'assets/js/jquery-ui.js'); 
+
+                wp_register_script('jquery_timpe_picker', DEVLLO_EVENTS_ADMIN_URI. 'assets/js/jquery.timepicker.min.js'); 
+
+                wp_enqueue_script( 'devllo_events_admin', DEVLLO_EVENTS_INC_URI. 'assets/js/devllo-events-admin.js', array(), false, true );
 
                 wp_enqueue_script( 'auto_complete', DEVLLO_EVENTS_INC_URI. 'assets/js/auto-complete.js', array(), false, true );
 
