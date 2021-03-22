@@ -46,6 +46,13 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 
 == Changelog ==
 
+= 1.0.4 - 22/02/2021 =
+BUG FIX: Fixed styling bug with Divi and other themes
+ENHANCEMENT: Added Event Dashboard Page
+ENHANCEMENT: New Settings Page design
+ENHANCEMENT: Added Event Status on Single Event pages
+
+
 = 1.0.3.2 - 17/02/2021 =
 BUG FIX: Fixed error on event links on Events page 
 

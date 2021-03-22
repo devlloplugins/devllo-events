@@ -31,11 +31,10 @@ class Devllo_Events_Admin_Settings{
 
     public function __construct() {
 	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
+	  add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
 	}
 	
-
-
-
     public function init_settings() {
 	  register_setting( 'devllo-events-options', 'devllo-map-api-key' );
 	  register_setting(	'devllo-events-options', 'devllo-events-organiser-checkbox');
@@ -44,6 +43,19 @@ class Devllo_Events_Admin_Settings{
 	  register_setting( 'devllo-events-pages', 'devllo-calendar-page' );
 	  register_setting( 'devllo-events-pages', 'devllo-events-template-radio' );
     }
+
+	function enqueue_scripts() {   
+
+        $my_current_screen = get_current_screen();
+
+        if ( isset( $my_current_screen->base ) && 'devllo_event_page_devllo-events-settings' === $my_current_screen->base ) {
+            wp_enqueue_style( 'dashboard-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/dashboard.css');
+			
+			wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/style.css');	
+
+        }       
+  
+      }
 
     
     public static function devllo_events_settings_page(){
@@ -63,24 +75,72 @@ class Devllo_Events_Admin_Settings{
         if( isset( $tab ) ) {
             $active_tab = $tab;
 		  } ?>
-		  
-		  <section class="jumbotron text-center">
-        <div class="container">
-		  <img style="width: 150px;" src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
-          <p style="margin-top: 0;">
-		  <a href="?page=devllo-events-addons&tab=devllo_events_free_addons&post_type=devllo_event" class='btn btn-primary my-2'>Add Ons</a>
-			  </p>
-        </div>
-	</section>
-	<h3><?php echo esc_attr($adminpagetitle); ?></h3>
+<div class="wrapper">
 
+        <!-- SideBar Starts Here -->
+		  <?php // Add Sidebar
+		 devllo_add_sidebar (); 
+		  ?>
+        <!-- SideBar Ends -->
 
-        <h2 class="nav-tab-wrapper">
-				<a href="?page=devllo-events-settings&tab=devllo_events_options&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_options' ? 'nav-tab-active' : ''; ?>"><?php _e('General', 'devllo-events'); ?></a>
-				<a href="?page=devllo-events-settings&tab=devllo_events_pages&post_type=devllo_event" class="nav-tab <?php echo $active_tab == 'devllo_events_pages' ? 'nav-tab-active' : ''; ?>"><?php _e('Pages', 'devllo-events'); ?></a>
-				</h2>
-        
-          <form method="post" action="options.php">
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle d-flex">
+          		<img src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
+
+            	</a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+					
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3"><?php _e('Settings', 'devllo-events'); ?></h1>
+
+					<div class="row">
+						<div class="col-md-3 col-xl-3">
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0"></h5>
+								</div>
+
+								<div class="list-group list-group-flush" role="tablist">
+									<a class="list-group-item list-group-item-action <?php echo $active_tab == 'devllo_events_options' ? 'nav-tab-active' : ''; ?>" data-bs-toggle="list" href="?page=devllo-events-settings&tab=devllo_events_options&post_type=devllo_event" role="tab">
+									<?php _e('General', 'devllo-events'); ?></a>
+
+									<a class="list-group-item list-group-item-action <?php echo $active_tab == 'devllo_events_pages' ? 'nav-tab-active' : ''; ?>" data-bs-toggle="list" href="?page=devllo-events-settings&tab=devllo_events_pages&post_type=devllo_event" role="tab">
+									<?php _e('Pages', 'devllo-events'); ?></a>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-9 col-xl-9">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="account" role="tabpanel">
+
+			
+								<div class="card" style="max-width: none;">
+										<div class="card-header">
+
+											<h5 class="card-title mb-0"></h5>
+										</div>
+										<div class="card-body">
+										<form method="post" action="options.php">
 <?php
 
        
@@ -147,8 +207,8 @@ class Devllo_Events_Admin_Settings{
 			} ?>
 			<tr>
 			<th style="text-align: left;"><?php _e('Events', 'devllo-events'); ?></th>
-			<td><em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-events]</em></td>
 			<td>
+			<em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-events]</em>
 			<?php   
 			wp_dropdown_pages( array( 
 				'name' => 'devllo-events-page', 
@@ -163,8 +223,8 @@ class Devllo_Events_Admin_Settings{
 
 			<tr>
 			<th style="text-align: left;"><?php _e('Calendar', 'devllo-events'); ?></th>
-			<td><em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-calendar]</em></td>
 			<td>
+			<em><?php _e('This page should include the shortcode', 'devllo-events');?> [devllo-calendar]</em>
 			<?php   
 			wp_dropdown_pages( array( 
 				'name' => 'devllo-calendar-page', 
@@ -178,23 +238,20 @@ class Devllo_Events_Admin_Settings{
 			</tr>
 		
 			<tr>
-			<th style="text-align: left;">
+			<th colspan=3 style="text-align: left;">
 			<h3><?php _e('Events Page Template', 'devllo-events'); ?></h3></th>
-			<td></td>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
 
-			<th style="text-align: left;"><?php _e('Choose a template for the Events Page', 'devllo-events'); ?></th>
-			<td></td>
+			<th colspan=3 style="text-align: left;"><?php _e('Choose a template for the Events Page', 'devllo-events'); ?></th>
 			<td></td>
 			<td></td>
 			</tr>
 			<tr>
-			<td><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>><?php _e('Calendar Type Template', 'devllo-events'); ?></td>
-        	<td><input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>><?php _e('Blog Grid Template', 'devllo-events'); ?></td>
-			<td></td>
+			<td colspan=3><input type="radio" name="devllo-events-template-radio" value="1" <?php checked(1, get_option('devllo-events-template-radio'), true); ?>><br/><?php _e('Calendar Type Template', 'devllo-events'); ?><br/>
+        	<input type="radio" name="devllo-events-template-radio" value="2" <?php checked(2, get_option('devllo-events-template-radio'), true); ?>><br/><?php _e('Blog Grid Template', 'devllo-events'); ?></td>
 			<td></td>
 			</tr>
 			</table>
@@ -202,8 +259,51 @@ class Devllo_Events_Admin_Settings{
         }
      			submit_button();
             ?>
-             </form>
-      <?php
+             </form>										
+										</div>
+								</div>
+								</div>
+			
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</main>
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a href="https://devlloplugins.com/" class="text-muted"><strong>Devllo Plugins</strong></a> &copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://devlloplugins.com/support/">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="https://devlloplugins.com/documentations/events-by-devllo-documentation/">Help Center</a>
+								</li>
+                                <!--
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Terms</a>
+								</li>
+                                    -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<h3><?php echo esc_attr($adminpagetitle); ?></h3>
+   <?php
     }
 
 }

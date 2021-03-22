@@ -64,7 +64,43 @@ $endweekday = date("l", mktime(0, 0, 0, $endmonth, $endday, $endyear));
 
 $startdate = get_post_meta( $post->ID, '_start_year', true ). '-' .get_post_meta( $post->ID, '_start_month', true ). '-' .get_post_meta( $post->ID, '_start_day', true );
 $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $post->ID, '_end_month', true ). '-' .get_post_meta( $post->ID, '_end_day', true );
+
+// Event Status - Past, Ongoing, Upcoming
+$startcheckdate = get_post_meta( $post->ID, '_start_year', true ). '-' .get_post_meta( $post->ID, '_start_month', true ). '-' .get_post_meta( $post->ID, '_start_day', true );
+$endcheckdate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $post->ID, '_end_month', true ). '-' .get_post_meta( $post->ID, '_end_day', true );
+
+$startchecktime = get_post_meta( $post->ID, '_start_hour', true ). ':' .get_post_meta( $post->ID, '_start_minute', true );
+$endchecktime = get_post_meta( $post->ID, '_end_hour', true ). ':' .get_post_meta( $post->ID, '_end_minute', true );
+
+if (new DateTime() > new DateTime("$endcheckdate $endchecktime")) {
+# current time is greater than 2010-05-15 16:00:00
+# in other words, 2010-05-15 16:00:00 has passed
+$bgstyle = 'bg-danger';
+$event_status = 'Past Event';
+}
+elseif (new DateTime() < new DateTime("$startcheckdate $startchecktime")) {
+    # current time is greater than 2010-05-15 16:00:00
+    # in other words, 2010-05-15 16:00:00 has passed
+    $bgstyle = 'bg-success';
+    $event_status = 'Upcoming Event';
+
+}
+elseif (new DateTime() > new DateTime("$startcheckdate $startchecktime") &&new DateTime() < new DateTime("$endcheckdate $endchecktime")) {
+    # current time is greater than 2010-05-15 16:00:00
+    # in other words, 2010-05-15 16:00:00 has passed
+    $bgstyle = 'bg-warning';
+    $event_status = 'Ongoing Event';
+
+}
+elseif (new DateTime() == new DateTime("$startcheckdate $startchecktime")) {
+    # current time is greater than 2010-05-15 16:00:00
+    # in other words, 2010-05-15 16:00:00 has passed
+    $bgstyle = 'bg-warning';
+    $event_status = 'Ongoing Event';
+}
 ?>
+
+
 <input type="hidden" value="<?php echo $location_lat;?>" name="lat" id="lat" disabled="true">
 <input type="hidden" value="<?php echo $location_long;?>" name="long" id="long" disabled="true">
 
@@ -77,6 +113,8 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
  $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
 
         echo '<div class="event-title event-page-title"><h1 class="event-title">'.  get_the_title().  '</h1>';
+        ?> <span class="badge <?php echo $bgstyle; ?>"><?php echo $event_status; ?> </span>
+        <?php
         if (get_option( 'devllo-events-organiser-checkbox' ) == 1){
         echo '<div class="event-organiser">' . __('Event Organiser', 'devllo-events') . '<br><span class="organiser-name">'.  get_the_author() . '</span></div></div>';
         }
@@ -194,7 +232,6 @@ $enddate = get_post_meta( $post->ID, '_end_year', true ). '-' .get_post_meta( $p
                 }
                 } ?>
               </div>
-
               <div><?php do_action('devllo_events_after_side_single_event'); ?></div>
       </div>
           
