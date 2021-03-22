@@ -302,7 +302,6 @@ class Devllo_Events_Admin_Settings{
 			</footer>
 		</div>
 	</div>
-	<h3><?php echo esc_attr($adminpagetitle); ?></h3>
    <?php
     }
 
