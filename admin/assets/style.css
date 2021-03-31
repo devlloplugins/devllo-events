@@ -4,11 +4,6 @@ input#autocomplete {
   width: 60%;
 }
 
-h4.panel-title {
-  border-bottom: 1px solid #e5e5e5;
-  padding: 10px;
-  color: #00993d;
-}
 
 /* Add Ons Page */
 
@@ -32,7 +27,7 @@ h4.panel-title {
 }}
 
 .jumbotron {
-  padding: 1rem 1rem;
+  padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
   border-radius: .3rem;
@@ -127,9 +122,4 @@ grid-template-columns: repeat(3, 1fr);
 grid-template-rows: 1fr;
 grid-column-gap: 30px;
 grid-row-gap: 30px;
-}
-
-a.sidebar-toggle.d-flex {
-  width: 70px;
-  height: 70px;
 }

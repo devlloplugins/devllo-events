@@ -31,10 +31,25 @@ class Devllo_Events_Addons_Page{
 
     public function __construct() {
 	  add_action( 'admin_init', array( $this, 'init_settings'  ) );
+	  add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
 	}
 
     public function init_settings() {
     }
+
+	function enqueue_scripts() {   
+
+        $my_current_screen = get_current_screen();
+
+        if ( isset( $my_current_screen->base ) && 'devllo_event_page_devllo-events-addons' === $my_current_screen->base ) {
+            wp_enqueue_style( 'dashboard-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/dashboard.css');	
+
+			wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/style.css');	
+
+        }       
+  
+      }
 
     
     public static function devllo_events_addons_page(){
@@ -53,24 +68,52 @@ class Devllo_Events_Addons_Page{
         if( isset( $tab ) ) {
             $active_tab = $tab;
           } ?>
+	<div class="wrapper">
 
-	<section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading"><?php echo esc_attr($pagetitle); ?></h1>
-          <p class="lead text-muted"><?php _e('Awesome addons to help you add features, integration to your Event Website.', 'devllo-events'); ?></p>
-          <p>
-		  <a href="?page=devllo-events-addons&tab=devllo_events_free_addons&post_type=devllo_event" class="btn btn-primary my-2  <?php echo $active_tab == 'devllo_events_free_addons' ? 'nav-tab-active' : ''; ?>"><?php _e('Free Add-Ons', 'devllo-events'); ?></a>
-			<a href="?page=devllo-events-addons&tab=devllo_events_premium_addons&post_type=devllo_event" class="btn btn-secondary my-2  <?php echo $active_tab == 'devllo_events_premium_addons' ? 'nav-tab-active' : ''; ?>"><?php _e('Premium Add-Ons', 'devllo-events'); ?></a>
-			  </p>
-        </div>
-	</section>
-	  
 
-        
-<?php
+		    <!-- SideBar Starts Here -->
+			<?php // Add Sidebar
+		 devllo_add_sidebar (); 
+		  ?>
+        <!-- SideBar Ends -->
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle d-flex">
+          		<img src="<?php echo DEVLLO_EVENTS_URI . 'icon-256x256.png'; ?>">
 
-       
-        if( $active_tab == 'devllo_events_free_addons' ) {
+            	</a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+					
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="messagesDropdown" data-bs-toggle="dropdown">
+								<div class="position-relative">
+									<i class="align-middle" data-feather="message-square"></i>
+
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<main class="content">
+				<div class="container-fluid p-0">
+
+
+				<section class="jumbotron text-center" style="margin-bottom: 10px;">
+				<div class="container">
+				<h1 class="jumbotron-heading"><?php echo esc_attr($pagetitle); ?></h1>
+				<p class="lead text-muted"><?php _e('Awesome addons to help you add features, integration to your Event Website.', 'devllo-events'); ?></p>
+				<p>
+				<a href="?page=devllo-events-addons&tab=devllo_events_free_addons&post_type=devllo_event" class="btn btn-primary my-2  <?php echo $active_tab == 'devllo_events_free_addons' ? 'nav-tab-active' : ''; ?>"><?php _e('Free Add-Ons', 'devllo-events'); ?></a>
+					<a href="?page=devllo-events-addons&tab=devllo_events_premium_addons&post_type=devllo_event" class="btn btn-secondary my-2  <?php echo $active_tab == 'devllo_events_premium_addons' ? 'nav-tab-active' : ''; ?>"><?php _e('Premium Add-Ons', 'devllo-events'); ?></a>
+					</p>
+				</div>
+				</section>
+
+				  <?php
+				if( $active_tab == 'devllo_events_free_addons' ) {
           settings_fields( 'devllo-events-free-addons' );
           do_settings_sections( 'devllo-events-free-addons' );
            ?>
@@ -114,7 +157,22 @@ class Devllo_Events_Addons_Page{
 
 				</div>
             <?php
-        }
+        } ?>
+
+
+		</div>
+		</main>
+		</div> <!-- main -->
+	</div>
+
+
+	
+	  
+
+        
+<?php
+
+     
 
     }
 

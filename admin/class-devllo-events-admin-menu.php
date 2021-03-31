@@ -35,6 +35,7 @@ class Devllo_Events_Admin_Menu {
 				call_user_func_array( 'add_submenu_page', $menu );
 			}
 		}
+		add_submenu_page( 'edit.php?post_type=devllo_event', __('Dashboard', 'devllo-events'), __('Dashboard', 'devllo-events'), 'manage_options', 'devllo-events-dashboard', array( 'Devllo_Events_Dashboard_Page', 'devllo_events_dashboard_page'  )); 
         add_submenu_page( 'edit.php?post_type=devllo_event', __('Devllo Events Settings', 'devllo-events'), __('Settings', 'devllo-events'), 'manage_options', 'devllo-events-settings', array( 'Devllo_Events_Admin_Settings', 'devllo_events_settings_page'  )); 
         add_submenu_page( 'edit.php?post_type=devllo_event', __('Add Ons', 'devllo-events'), __('Add Ons', 'devllo-events'), 'manage_options', 'devllo-events-addons', array( 'Devllo_Events_Addons_Page', 'devllo_events_addons_page'  )); 
 		do_action('devllo_events_admin_menu_item');

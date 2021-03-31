@@ -4,7 +4,7 @@
  *   Plugin URI: https://devlloplugins.com/
  *   Description: This is a simple Event Management plugin for adding and listing and managing your events, show event locations on map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
  *   Author: Devllo Plugins
- *   Version: 1.0.3.2
+ *   Version: 1.0.4
  *   Author URI: https://devllo.com/
  *   License:    GPL-2.0+
  *   License URI:  http://www.gnu.org/licenses/gpl-2.0.txt
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Current plugin version.
  */
-define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
+define( 'DEVLLO_EVENTS_VERSION', '1.0.4' );
 
 /**
  * Devllo_Events class
@@ -78,6 +78,7 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
         
         function devllo_events_enqueue_scripts() {   
             wp_enqueue_style( 'devllo-events-frontend', DEVLLO_EVENTS_INC_URI. 'assets/css/style.css');	
+            
         }
     
         // Defer Scripts
@@ -92,16 +93,29 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
             return $tag;
         } 
 
+
+        function enqueue_scripts() {   
+
+            $my_current_screen = get_current_screen();
+    
+            if ( isset( $my_current_screen->base ) && 'devllo_event_page_devllo-events-settings' === $my_current_screen->base ) {
+                wp_enqueue_style( 'dashboard-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/dashboard.css');	
+            }       
+      
+          }
+
         public function admin_enqueue_scripts() {
 
-            wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/style.css');	
 
-            wp_enqueue_style( 'jquery-ui-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery-ui.css');	
-
-            wp_enqueue_style( 'jquery-time-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery.timepicker.min.css');	
             global $pagenow;
 
+
             if ((( $pagenow == 'post-new.php' ) || ( $pagenow == 'post.php' )) && (get_post_type() == 'devllo_event')) {
+                wp_enqueue_style( 'jquery-ui-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery-ui.css');	
+
+                wp_enqueue_style( 'devllo-events-admin-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/style.css');	
+
+                wp_enqueue_style( 'jquery-time-css', DEVLLO_EVENTS_ADMIN_URI. 'assets/css/jquery.timepicker.min.css');	
 
                 wp_register_script('jquery2', DEVLLO_EVENTS_INC_URI. 'assets/js/jquery-1.12.4.js'); 
 
@@ -174,6 +188,9 @@ define( 'DEVLLO_EVENTS_VERSION', '1.0.3' );
             $this->_include( 'admin/class-devllo-events-posts-admin.php');
             $this->_include( 'admin/class-devllo-events-admin-settings.php');
             $this->_include( 'admin/class-devllo-events-addons-page.php');
+            $this->_include( 'admin/class-devllo-events-admin-page-sidebar.php');
+
+            $this->_include( 'admin/class-devllo-events-dashboard-page.php');
             $this->_include( 'templates/calendar-event.php');
             $this->_include( 'templates/template-events.php');
 
