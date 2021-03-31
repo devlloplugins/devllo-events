@@ -236,6 +236,8 @@ class Devllo_Events_Admin_Settings{
 			</td>
 			<td><a target="_blank" href="<?php echo esc_url( get_permalink(get_option('devllo-calendar-page')) ); ?>" class="button button-secondary"><?php _e('View Page', 'devllo-events'); ?></a></td>
 			</tr>
+
+			<?php do_action('devllo_events_settings_page_item'); ?>
 		
 			<tr>
 			<th colspan=3 style="text-align: left;">

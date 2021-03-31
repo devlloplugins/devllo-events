@@ -6,7 +6,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
  
 // Delete Event Posts in Database  
-$devllo_events= get_posts(['post_type'=>'devllo_event','numberposts'=>-1]);// all posts
+$devllo_events = get_posts(['post_type'=>'devllo_event','numberposts'=>-1]);// all posts
 foreach($devllo_events as $event){
     wp_delete_post($event->ID,true);
 }
