@@ -14,6 +14,8 @@ This is a simple event management plugin for adding and listing your events, sho
 This is a simple event management plugin for adding and listing your events, show event locations on a map, link to online Event locations. It also integrates with FullCalendar to show a calendar with all events.
 You can display events list using the shortcode [devllo-events] and the Calendar using [devllo-calendar]
 
+Create and organize events on your WordPress site with Events by Devllo Plugins. This WordPress calendar plugin works for either in-person or virtual events and showcases proficient features supported by our notable team of developers and designers.
+
 
 == Installation ==
 You can install directly from the Plugin Repository using the Plugins system in WordPress.
