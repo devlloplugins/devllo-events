@@ -31,6 +31,8 @@ You can manually edit the pages to add these shortcodes.
 2. Single Event Page.
 3. Event Calendar Page.
 4. Event List Page.
+5. Events Page.
+6. Admin Dashboard Page.
 
 == Frequently Asked Questions ==
 = Where do I find the settings? =
@@ -45,6 +47,9 @@ Please post it in the [WordPress support forum](https://wordpress.org/support/pl
 
 
 == Changelog ==
+= 1.0.4.1 - 01/04/2021 =
+Added action hooks to aid with upcoming add-on integrations
+
 
 = 1.0.4 - 22/02/2021 =
 BUG FIX: Fixed styling bug with Divi and other themes
